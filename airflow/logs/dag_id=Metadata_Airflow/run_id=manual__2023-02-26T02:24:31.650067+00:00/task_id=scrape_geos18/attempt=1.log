@@ -1,0 +1,23 @@
+[2023-02-26T02:24:37.605+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: Metadata_Airflow.scrape_geos18 manual__2023-02-26T02:24:31.650067+00:00 [queued]>
+[2023-02-26T02:24:37.613+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: Metadata_Airflow.scrape_geos18 manual__2023-02-26T02:24:31.650067+00:00 [queued]>
+[2023-02-26T02:24:37.613+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-02-26T02:24:37.614+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 1
+[2023-02-26T02:24:37.614+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-02-26T02:24:37.623+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): scrape_geos18> on 2023-02-26 02:24:31.650067+00:00
+[2023-02-26T02:24:37.643+0000] {standard_task_runner.py:55} INFO - Started process 980 to run task
+[2023-02-26T02:24:37.648+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'Metadata_Airflow', 'scrape_geos18', 'manual__2023-02-26T02:24:31.650067+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/scrape_***.py', '--cfg-path', '/tmp/tmpqtaunq9u']
+[2023-02-26T02:24:37.649+0000] {standard_task_runner.py:83} INFO - Job 84: Subtask scrape_geos18
+[2023-02-26T02:24:37.719+0000] {task_command.py:388} INFO - Running <TaskInstance: Metadata_Airflow.scrape_geos18 manual__2023-02-26T02:24:31.650067+00:00 [running]> on host e4ffe5f689d7
+[2023-02-26T02:24:37.779+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Metadata_Airflow
+AIRFLOW_CTX_TASK_ID=scrape_geos18
+AIRFLOW_CTX_EXECUTION_DATE=2023-02-26T02:24:31.650067+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-02-26T02:24:31.650067+00:00
+[2023-02-26T02:24:51.607+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-02-26T02:24:51.627+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=Metadata_Airflow, task_id=scrape_geos18, execution_date=20230226T022431, start_date=20230226T022437, end_date=20230226T022451
+[2023-02-26T02:24:51.686+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2023-02-26T02:24:51.728+0000] {taskinstance.py:2578} INFO - 1 downstream tasks scheduled from follow-on schedule check

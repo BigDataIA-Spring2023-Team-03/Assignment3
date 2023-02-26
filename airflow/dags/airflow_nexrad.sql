@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS nexrad (year NUMBER, month NUMBER, day Number, station TEXT);

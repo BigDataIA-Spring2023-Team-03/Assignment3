@@ -1,0 +1,24 @@
+version: "3"
+services:
+  app:
+    env_file:
+      - .env
+    container_name: frontend
+    build:
+      dockerfile: Dockerfile
+    command: "streamlit run --server.port 8501 --server.enableCORS false 1_Login_Page.py"
+    ports:
+      - "8501:8501"
+    image: manideepak0413/frontendimage:v1
+
+  api:
+    env_file:
+      - .env
+    container_name: backend
+    build:
+      dockerfile: fastapi_docker/Dockerfile
+    command: "uvicorn apis:app --host 0.0.0.0 --port 8000 --reload"
+    ports:
+      - "8000:8000"
+    image: manideepak0413/backendimage:v1
+

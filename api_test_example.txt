@@ -1,0 +1,50 @@
+# Test S3 Transfer
+# URL = https://noaa-goes18.s3.amazonaws.com/ABI-L1b-RadC/2023/001/00/OR_ABI-L1b-RadC-M6C01_G18_s20230010001170_e20230010003544_c20230010003582.nc
+
+
+# New
+{
+  "search_method": search_method,
+  "src_bucket": BUCKET_NAME,
+  "dest_bucket": dest_bucket,
+  "dest_folder": dest_folder,
+  "prefix": prefix,
+  "file_name": file_name
+}
+
+# Field Selection test - GOES
+{
+  "search_method": "Field Selection",
+  "src_bucket": "noaa-goes18",
+  "dest_bucket": "damg7245",
+  "dest_folder": "assignment1",
+  "prefix": "ABI-L1b-RadC/2023/001/00/",
+  "file_name": "OR_ABI-L1b-RadC-M6C01_G18_s20230010001170_e20230010003544_c20230010003582.nc"
+}
+# File Name - GOES
+{
+  "search_method": "File Name",
+  "src_bucket": "noaa-goes18",
+  "dest_bucket": "damg7245",
+  "dest_folder": "assignment1",
+  "prefix": "ABI-L1b-RadC/2023/001/00/",
+  "file_name": "OR_ABI-L1b-RadC-M6C01_G18_s20230010001170_e20230010003544_c20230010003582.nc"
+}
+# Field Selection test - NEXRAD
+{
+  "search_method": "Field Selection",
+  "src_bucket": "noaa-nexrad-level2",
+  "dest_bucket": "damg7245",
+  "dest_folder": "assignment1",
+  "prefix": "",
+  "file_name": "KBGM20110612_003045_V03.gz"
+}
+# File Name - NEXRAD
+{
+  "search_method": "File Name",
+  "src_bucket": "noaa-nexrad-level2",
+  "dest_bucket": "damg7245",
+  "dest_folder": "assignment1",
+  "prefix": "",
+  "file_name": "KBGM20110612_003045_V03.gz"
+}

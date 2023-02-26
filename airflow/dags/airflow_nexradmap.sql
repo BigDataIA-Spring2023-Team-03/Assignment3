@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS nexrad_lat_long (station text, LAT float, LONG float, city text);
