@@ -68,6 +68,7 @@ if login_submit:
 with st.sidebar:
     if st.session_state and st.session_state.logged_in and st.session_state.email:
         st.write(f'Current User: {st.session_state.email}')
+        st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
     else:
         st.write('Current User: Not Logged In')
 

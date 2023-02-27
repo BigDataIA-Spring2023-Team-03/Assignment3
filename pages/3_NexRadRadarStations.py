@@ -20,6 +20,7 @@ if 'logged_in' not in st.session_state:
 with st.sidebar:
     user = "Not Logged In" if st.session_state.email == "" else st.session_state.email
     st.write(f'Current User: {user}')
+    st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
     logout_submit = st.button('LogOut', disabled=st.session_state.logout_disabled)
     if logout_submit:
         for key in st.session_state.keys():
