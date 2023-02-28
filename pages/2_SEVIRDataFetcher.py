@@ -11,6 +11,7 @@ from Util.DbUtil import *
 from Util.S3Util import S3Util
 import string
 import requests
+from datetime import datetime
 
 
 if 'email' not in st.session_state:
@@ -27,6 +28,7 @@ if 'logged_in' not in st.session_state:
 with st.sidebar:
     user = "Not Logged In" if st.session_state.email == "" else st.session_state.email
     st.write(f'Current User: {user}')
+    st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
     logout_submit = st.button('LogOut', disabled=st.session_state.logout_disabled)
     if logout_submit:
         for key in st.session_state.keys():
@@ -38,7 +40,7 @@ with st.sidebar:
         st.session_state.register_disabled = False
         st.experimental_rerun()
 
-#########################################
+########################################################################################################################
 
 util = DbUtil("metadata.db")
 
@@ -329,6 +331,26 @@ if not st.session_state.email == "":
                 hour_list.insert(0, "")
                 hour_selected = st.selectbox(f'Please select {metadata[3]}', hour_list)
 
+                # TRACKING APIS
+                # Insert into USER_API for Logging
+                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
+                        [(st.session_state.email, 
+                        'Field_Selection-GEOS18-Files', # api
+                        'GET', # api_type
+                        f"""{data}""", # response_body
+                        response.status_code,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                        )])
+                
+                # TESTING
+                st.write([(st.session_state.email, 
+                        'S3_Transfer', # api
+                        'POST', # api_type
+                        f"""{data}""", # response_body
+                        response.status_code,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                        )])
+
                 if hour_selected:
                     prefix = "ABI-L1b-RadC/"+year_selected+"/"+day_selected+"/"+hour_selected+"/"
                     result = s3.list_objects(Bucket=BUCKET_NAME, Prefix=prefix, Delimiter='/')
@@ -508,6 +530,17 @@ if not st.session_state.email == "":
                     station_selected = st.selectbox(
                     f'Please select {metadata[3]}', station_list)
 
+                    # TRACKING APIS
+                    # Insert into USER_API for Logging
+                    util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
+                            [(st.session_state.email, 
+                            'Field_Selection-NEXRAD-Files', # api
+                            'GET', # api_type
+                            f"""{data}""", # response_body
+                            response.status_code,
+                            datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                            )])
+
                     if station_selected:
                         prefix = year_selected +"/"+month_selected+"/"+day_selected+"/"+station_selected+"/"
                         result = s3.list_objects(Bucket=BUCKET_NAME, Prefix=prefix, Delimiter='/')
@@ -583,6 +616,26 @@ if not st.session_state.email == "":
                 if 'Error' in dest_url:
                     st.write(dest_url)
                 st.write(f'Destination s3 URL: {dest_url}')
+
+                # TRACKING APIS
+                # Insert into USER_API for Logging
+                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
+                        [(st.session_state.email, 
+                        'S3_Transfer', # api
+                        'POST', # api_type
+                        f"""{data}""", # response_body
+                        response.status_code,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                        )])
+                
+                # TESTING
+                st.write([(st.session_state.email, 
+                        'S3_Transfer', # api
+                        'POST', # api_type
+                        f"""{data}""", # response_body
+                        response.status_code,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                        )])
 
 
     util.conn.close()

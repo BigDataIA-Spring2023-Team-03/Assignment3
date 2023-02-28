@@ -41,6 +41,17 @@ class DbUtil:
         self.cursor.execute(query)
         self.conn.commit()
 
+    # Update Table
+    def update_table(self, table_name, update_column, update_value, filter_column, filter):
+        query = f'''UPDATE {table_name} 
+                    SET {update_column} = '{update_value}'
+                    WHERE {filter_column} = '{filter}';'''
+        # TESTING
+        print(query)
+
+        self.cursor.execute(query)
+        self.conn.commit()
+
     def insert(self, table_name, column_names, list_of_tuples):
         try:
             self.conn.executemany('INSERT INTO {} ({}) VALUES ({})'.format(table_name, ', '.join([i for i in column_names]), ', '.join(['?' for i in range(len(column_names))])), list_of_tuples)
@@ -93,6 +104,17 @@ class DbUtil:
             self.cursor.execute(query)
             results = self.cursor.fetchall()
             return str(results)
+        except Exception as e:
+            print(f"Error executing query: {e}")
+            raise Exception("Error during query execution")
+        
+    # CUSTOM QUERIES
+    def execute_custom_query(self, query):
+        try:
+            self.cursor.execute(query)
+            results = self.cursor.fetchall()
+            # return str(results)
+            return results
         except Exception as e:
             print(f"Error executing query: {e}")
             raise Exception("Error during query execution")
