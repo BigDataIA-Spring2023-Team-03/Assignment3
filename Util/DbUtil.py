@@ -43,9 +43,12 @@ class DbUtil:
 
     # Update Table
     def update_table(self, table_name, update_column, update_value, filter_column, filter):
-        query = f'''UPDATE TABLE {table_name} 
-                    SET COLUMN {update_column} = {update_value}
-                    WHERE {filter_column} = {filter};'''
+        query = f'''UPDATE {table_name} 
+                    SET {update_column} = '{update_value}'
+                    WHERE {filter_column} = '{filter}';'''
+        # TESTING
+        print(query)
+
         self.cursor.execute(query)
         self.conn.commit()
 
@@ -110,7 +113,8 @@ class DbUtil:
         try:
             self.cursor.execute(query)
             results = self.cursor.fetchall()
-            return str(results)
+            # return str(results)
+            return results
         except Exception as e:
             print(f"Error executing query: {e}")
             raise Exception("Error during query execution")

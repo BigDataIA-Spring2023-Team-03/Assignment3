@@ -73,10 +73,10 @@ if login_submit:
         st.session_state.subscription_tier = util.execute_custom_query(query)[0][0]
 
         # TESTING
-        st.write(query)
-        st.write(st.session_state.subscription_tier)
+        # st.write(query)
+        # st.write(st.session_state.subscription_tier)
 
-        # switch_page('sevirdatafetcher')
+        switch_page('sevirdatafetcher')
 
     elif res.status_code == 401 or res.status_code == 422:
         switch_page('registerpage')
