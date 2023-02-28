@@ -86,8 +86,8 @@ def filter(request: schemas.Field_Selection):
 @app.post('/user/register', tags=['user'])
 def register(user: schemas.UserRegisterSchema):
     if not dbUtil.check_user_registered('users', user.email):
-        dbUtil.insert('users', ['first_name', 'last_name', 'email', 'password_hash'],
-                      [(user.first_name, user.last_name, user.email, auth.get_password_hash(user.password))])
+        dbUtil.insert('users', ['first_name', 'last_name', 'email', 'password_hash', 'subscription_tier'],
+                      [(user.first_name, user.last_name, user.email, auth.get_password_hash(user.password), user.subscription_tier)])
         with open(file_path, "rb") as f:
             s3.upload_fileobj(f, dest_bucket, s3_key)
     else:
@@ -108,25 +108,25 @@ def login(user: schemas.UserLoginSchema):
 @app.get('/user/status', tags=['user'], dependencies=[Depends(auth_bearer.JWTBearer())])
 def api_status(user: schemas.UserSubscriptionSchema):
     # Get the amount of API Calls remaining in the last hour
-    now = datetime.now()
-    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+    # now = datetime.now()
+    # current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-    # query = f'''SELECT COUNT(*) 
-    # FROM USER_API 
-    # WHERE EMAIL = {user.email}
-    #         AND DATETIME(TIME_OF_REQUEST, YYYY-MM-DD HH:MM:SS) >= {current_time} - 1 hour
-    #         AND API_TYPE = 'GET'
-    #         AND API != 'USER_STATUS'
-    #         AND REQUEST_BODY = 'SUCCESS';'''
+    query = f'''SELECT COUNT(*) 
+    FROM USER_API 
+    WHERE EMAIL = '{user.email}'
+            AND DATETIME(TIME_OF_REQUEST) >= DATETIME('{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}', '-1 hour')
+            AND API_TYPE = 'GET'
+            AND API != 'USER_STATUS'
+            AND REQUEST_STATUS = 200;'''
     
-    # curr_api_call_amount = dbUtil.execute_custom_query(query)
+    curr_api_call_amount = dbUtil.execute_custom_query(query)
 
     subscription_call_limits = {'Free': 10, 'Gold': 15, 'Platinum': 20}
-    # api_call_limit = subscription_call_limits[user.subscription_tier]
+    api_call_limit = subscription_call_limits[user.subscription_tier]
 
     # TESTING
-    curr_api_call_amount = 5
-    api_call_limit = subscription_call_limits['Free']
+    # curr_api_call_amount = 5
+    # api_call_limit = subscription_call_limits['Free']
 
     api_calls_remaining = api_call_limit - curr_api_call_amount
         
@@ -136,10 +136,10 @@ def api_status(user: schemas.UserSubscriptionSchema):
 # Upgrade Subscription API
 @app.post('/user/subscription_upgrade', tags=['user'], dependencies=[Depends(auth_bearer.JWTBearer())])
 def register(user: schemas.UserSubscriptionSchema):
-    dbUtil.update_table('users', 'subscription_tier', 'new_subscription_value', 'email', user.email)
+    dbUtil.update_table('users', 'subscription_tier', user.subscription_tier, 'email', user.email)
     with open(file_path, "rb") as f:
         s3.upload_fileobj(f, dest_bucket, s3_key)
-    return auth.signJWT(user.email)
+    return {'New Subscription Tier': user.subscription_tier}
 
 
 

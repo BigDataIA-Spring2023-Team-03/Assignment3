@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import json
 from streamlit_extras.switch_page_button import switch_page
+from Util.DbUtil import *
 
 #########################################
 # Pages:
@@ -22,6 +23,9 @@ if 'email' not in st.session_state:
 if 'password' not in st.session_state:
     st.session_state.password = ''
 
+if 'subscription_tier' not in st.session_state:
+    st.session_state.subscription_tier = ''
+
 if 'access_token' not in st.session_state:
     st.session_state.access_token = ''
 
@@ -37,6 +41,11 @@ if 'register_disabled' not in st.session_state:
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
+########################################################################################################################
+
+util = DbUtil("metadata.db")
+
+########################################################################################################################
 
 email = st.text_input("Email", st.session_state.email, placeholder='Email')
 password = st.text_input("Password", st.session_state.password, placeholder='Password', type = 'password')
@@ -56,7 +65,18 @@ if login_submit:
         st.session_state.login_disabled = True
         st.session_state.logged_in = True
         st.session_state.logout_disabled = False
-        switch_page('sevirdatafetcher')
+        # Get Subscription_tier for logged in user
+        query = f'''SELECT DISTINCT SUBSCRIPTION_TIER
+        FROM USERS
+        WHERE EMAIL = '{st.session_state.email}';'''
+
+        st.session_state.subscription_tier = util.execute_custom_query(query)[0][0]
+
+        # TESTING
+        st.write(query)
+        st.write(st.session_state.subscription_tier)
+
+        # switch_page('sevirdatafetcher')
 
     elif res.status_code == 401 or res.status_code == 422:
         switch_page('registerpage')

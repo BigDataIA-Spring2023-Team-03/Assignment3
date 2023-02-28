@@ -38,10 +38,18 @@ if not st.session_state.email == "":
 
     # Check API Requests Remaining
     if st.button('Check API Requests Remaining'):
-        res = requests.get(url='http://backend:8000/user/register')
+        data = {
+                'email': st.session_state.email,
+                'subscription_tier': st.session_state.subscription_tier
+                }
+        res = requests.post(url='http://backend:8000/user/status', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
+        # TESTING
+        st.write(data)
+        st.write(res.json())
+        
         if res and res.status_code == 200:
-            
-            api_calls_remaining = 10
+            api_calls_remaining = res.json().get('API Calls Remaining')
+
             st.write(f'You currently have {api_calls_remaining} API calls remaining.')
             st.write('Use the Upgrade Subscription button belopw to unlock more API Calls!')
 
@@ -50,7 +58,7 @@ if not st.session_state.email == "":
             error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Session TimedOut, Sign Back In!</p>"""
             st.markdown(error, unsafe_allow_html=True)
         else:
-            error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Error while fetching the lat long data</p>"""
+            error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Error while fetching API Requests Remaining</p>"""
             st.markdown(error, unsafe_allow_html=True)
 
     # Upgrade Subscription
@@ -60,21 +68,24 @@ if not st.session_state.email == "":
         if subscription_tier:
             data = {
                 'email': st.session_state.email,
-                'subscription_tier': st.session_state.subscription_tier
+                'subscription_tier': subscription_tier
             }
             res = requests.post(url='http://backend:8000/user/subscription_upgrade', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
+            # TESTING
+            st.write(data)
+            st.write(res.json())
             if res and res.status_code == 200:
                 # If it works update the session state
                 st.session_state.subscription_tier = subscription_tier.split('-')[0] # grabs just the tier
 
-                st.write(f'Your Subscription Tier has been updated to {st.session_state.subscription_tier}, you now have {subscription_tier.split('-')[1]} API Calls/hour!')
+                st.write(f'''Your Subscription Tier has been updated to {st.session_state.subscription_tier}, you now have {subscription_tier.split('-')[1]} API Calls/hour!''')
             
             elif res and res.status_code == 403:
                 st.session_state.logout_disabled = False
                 error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Session TimedOut, Sign Back In!</p>"""
                 st.markdown(error, unsafe_allow_html=True)
             else:
-                error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Error while fetching the lat long data</p>"""
+                error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Error while upgrading Subscription!</p>"""
                 st.markdown(error, unsafe_allow_html=True)
 
 
