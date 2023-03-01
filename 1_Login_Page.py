@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import json
 from streamlit_extras.switch_page_button import switch_page
+from Util.DbUtil import *
+from datetime import datetime
 
 #########################################
 # Pages:
@@ -22,6 +24,9 @@ if 'email' not in st.session_state:
 if 'password' not in st.session_state:
     st.session_state.password = ''
 
+if 'subscription_tier' not in st.session_state:
+    st.session_state.subscription_tier = ''
+
 if 'access_token' not in st.session_state:
     st.session_state.access_token = ''
 
@@ -37,6 +42,11 @@ if 'register_disabled' not in st.session_state:
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
+########################################################################################################################
+
+util = DbUtil("metadata.db")
+
+########################################################################################################################
 
 email = st.text_input("Email", st.session_state.email, placeholder='Email')
 password = st.text_input("Password", st.session_state.password, placeholder='Password', type = 'password')
@@ -50,12 +60,36 @@ if login_submit:
         'password': st.session_state.password
     }
     res = requests.post(url='http://backend:8000/user/login', data=json.dumps(login_user))
+
+    # TRACKING APIS
+    # Insert into USER_API for Logging
+    list_of_tuples = [(st.session_state.email, 
+                       'Login', 
+                       'POST', 
+                       f"""{json.dumps(login_user)}""", 
+                       res.status_code, 
+                       datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
+    # print(list_of_tuples)
+    # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
+    util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
     if res and res.status_code == 200:
         # st.experimental_rerun()
         st.session_state.access_token = res.json()['access_token']
         st.session_state.login_disabled = True
         st.session_state.logged_in = True
         st.session_state.logout_disabled = False
+        # Get Subscription_tier for logged in user
+        query = f'''SELECT DISTINCT SUBSCRIPTION_TIER
+        FROM USERS
+        WHERE EMAIL = '{st.session_state.email}';'''
+
+        st.session_state.subscription_tier = util.execute_custom_query(query)[0][0]
+
+        # TESTING
+        # st.write(query)
+        # st.write(st.session_state.subscription_tier)
+
         switch_page('sevirdatafetcher')
 
     elif res.status_code == 401 or res.status_code == 422:
@@ -68,6 +102,7 @@ if login_submit:
 with st.sidebar:
     if st.session_state and st.session_state.logged_in and st.session_state.email:
         st.write(f'Current User: {st.session_state.email}')
+        st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
     else:
         st.write('Current User: Not Logged In')
 

@@ -1,0 +1,716 @@
+[2023-02-27T03:12:56.686+0000] {processor.py:153} INFO - Started process (PID=61) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:12:56.688+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:12:56.690+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:12:56.690+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:12:59.083+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:12:59.077+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:12:59.086+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:12:59.101+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 2.445 seconds
+[2023-02-27T03:13:29.353+0000] {processor.py:153} INFO - Started process (PID=103) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:13:29.355+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:13:29.356+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:13:29.356+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:13:30.016+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:13:30.007+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:13:30.019+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:13:30.031+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.683 seconds
+[2023-02-27T03:14:00.284+0000] {processor.py:153} INFO - Started process (PID=154) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:14:00.285+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:14:00.286+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:14:00.286+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:14:01.399+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:14:01.390+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:14:01.402+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:14:01.414+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.137 seconds
+[2023-02-27T03:14:31.503+0000] {processor.py:153} INFO - Started process (PID=207) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:14:31.504+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:14:31.505+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:14:31.505+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:14:31.942+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:14:31.937+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:14:31.944+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:14:31.955+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.455 seconds
+[2023-02-27T03:15:02.210+0000] {processor.py:153} INFO - Started process (PID=271) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:15:02.212+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:15:02.213+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:15:02.213+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:15:02.780+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:15:02.773+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:15:02.783+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:15:02.794+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.588 seconds
+[2023-02-27T03:15:33.039+0000] {processor.py:153} INFO - Started process (PID=313) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:15:33.040+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:15:33.041+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:15:33.041+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:15:33.607+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:15:33.601+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:15:33.609+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:15:33.633+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.598 seconds
+[2023-02-27T03:16:03.857+0000] {processor.py:153} INFO - Started process (PID=376) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:16:03.858+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:16:03.859+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:16:03.858+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:16:04.464+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:16:04.457+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:16:04.466+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:16:04.477+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.623 seconds
+[2023-02-27T03:16:34.725+0000] {processor.py:153} INFO - Started process (PID=418) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:16:34.726+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:16:34.728+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:16:34.728+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:16:35.337+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:16:35.330+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:16:35.340+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:16:35.377+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.657 seconds
+[2023-02-27T03:17:05.651+0000] {processor.py:153} INFO - Started process (PID=481) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:17:05.652+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:17:05.654+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:17:05.654+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:17:06.247+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:17:06.237+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:17:06.250+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:17:06.264+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.628 seconds
+[2023-02-27T03:17:36.474+0000] {processor.py:153} INFO - Started process (PID=523) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:17:36.475+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:17:36.476+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:17:36.476+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:17:36.951+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:17:36.947+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:17:36.954+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:17:36.972+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.501 seconds
+[2023-02-27T03:18:07.217+0000] {processor.py:153} INFO - Started process (PID=572) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:18:07.218+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:18:07.219+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:18:07.219+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:18:07.821+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:18:07.813+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:18:07.823+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:18:07.846+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.632 seconds
+[2023-02-27T03:18:38.119+0000] {processor.py:153} INFO - Started process (PID=627) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:18:38.120+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:18:38.121+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:18:38.121+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:18:38.557+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:18:38.550+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:18:38.559+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:18:38.575+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.458 seconds
+[2023-02-27T03:19:08.678+0000] {processor.py:153} INFO - Started process (PID=670) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:19:08.680+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:19:08.681+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:19:08.681+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:19:09.286+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:19:09.277+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:19:09.290+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:19:09.305+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.631 seconds
+[2023-02-27T03:19:39.577+0000] {processor.py:153} INFO - Started process (PID=722) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:19:39.586+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:19:39.595+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:19:39.592+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:19:40.640+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:19:40.628+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:19:40.644+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:19:40.666+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.096 seconds
+[2023-02-27T03:20:10.830+0000] {processor.py:153} INFO - Started process (PID=775) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:20:10.831+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:20:10.832+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:20:10.832+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:20:11.316+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:20:11.309+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:20:11.318+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:20:11.330+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.502 seconds
+[2023-02-27T03:20:41.610+0000] {processor.py:153} INFO - Started process (PID=817) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:20:41.611+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:20:41.612+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:20:41.612+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:20:42.043+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:20:42.037+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:20:42.046+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:20:42.056+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.448 seconds
+[2023-02-27T03:21:12.315+0000] {processor.py:153} INFO - Started process (PID=859) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:21:12.316+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:21:12.317+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:21:12.317+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:21:12.737+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:21:12.728+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:21:12.739+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:21:12.760+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.448 seconds
+[2023-02-27T03:21:43.020+0000] {processor.py:153} INFO - Started process (PID=922) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:21:43.021+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:21:43.022+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:21:43.022+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:21:43.471+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:21:43.464+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:21:43.474+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:21:43.488+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.472 seconds
+[2023-02-27T03:22:13.876+0000] {processor.py:153} INFO - Started process (PID=964) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:22:13.878+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:22:13.883+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:22:13.882+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:22:15.816+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:22:15.802+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:22:15.821+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:22:15.859+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.993 seconds
+[2023-02-27T03:22:46.345+0000] {processor.py:153} INFO - Started process (PID=1005) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:22:46.349+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:22:46.363+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:22:46.363+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:22:51.298+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:22:51.283+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:22:51.303+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:22:51.333+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 4.998 seconds
+[2023-02-27T03:23:22.029+0000] {processor.py:153} INFO - Started process (PID=1047) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:23:22.040+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:23:22.051+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:23:22.049+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:23:27.044+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:23:27.021+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:23:27.049+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:23:27.090+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 5.112 seconds
+[2023-02-27T03:23:57.782+0000] {processor.py:153} INFO - Started process (PID=1089) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:23:57.788+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:23:57.797+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:23:57.796+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:24:01.000+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:24:00.988+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:24:01.004+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:24:01.024+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 3.311 seconds
+[2023-02-27T03:24:31.168+0000] {processor.py:153} INFO - Started process (PID=1120) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:24:31.170+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:24:31.173+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:24:31.172+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:24:32.797+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:24:32.779+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:24:32.802+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:24:32.852+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.693 seconds
+[2023-02-27T03:25:03.170+0000] {processor.py:153} INFO - Started process (PID=1174) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:25:03.171+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:25:03.172+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:25:03.172+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:25:03.626+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:25:03.618+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:25:03.629+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:25:03.644+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.477 seconds
+[2023-02-27T03:25:33.792+0000] {processor.py:153} INFO - Started process (PID=1216) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:25:33.793+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:25:33.794+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:25:33.794+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:25:34.650+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:25:34.640+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:25:34.653+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:25:34.671+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.882 seconds
+[2023-02-27T03:26:05.017+0000] {processor.py:153} INFO - Started process (PID=1278) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:26:05.019+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:26:05.020+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:26:05.020+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:26:05.788+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:26:05.778+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:26:05.791+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:26:05.811+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.800 seconds
+[2023-02-27T03:26:36.120+0000] {processor.py:153} INFO - Started process (PID=1320) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:26:36.122+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:26:36.123+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:26:36.123+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:26:36.778+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:26:36.768+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:26:36.782+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:26:36.805+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.690 seconds
+[2023-02-27T03:27:07.130+0000] {processor.py:153} INFO - Started process (PID=1362) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:27:07.131+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T03:27:07.132+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:27:07.132+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:27:07.625+0000] {logging_mixin.py:137} INFO - [2023-02-27T03:27:07.620+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T03:27:07.628+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T03:27:07.637+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.510 seconds
+[2023-02-27T22:04:49.220+0000] {processor.py:153} INFO - Started process (PID=62) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:04:49.226+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:04:49.232+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:04:49.231+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:04:54.964+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:04:54.889+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T22:04:54.978+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:04:55.027+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 5.812 seconds
+[2023-02-27T22:06:10.671+0000] {processor.py:153} INFO - Started process (PID=62) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:06:10.673+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:06:10.675+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:06:10.675+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:06:13.153+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:06:13.132+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T22:06:13.159+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:06:13.211+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 2.547 seconds
+[2023-02-27T22:06:43.535+0000] {processor.py:153} INFO - Started process (PID=113) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:06:43.537+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:06:43.540+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:06:43.539+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:06:44.678+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:06:44.665+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T22:06:44.684+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:06:44.751+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.222 seconds
+[2023-02-27T22:07:14.938+0000] {processor.py:153} INFO - Started process (PID=155) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:07:14.940+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:07:14.944+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:07:14.944+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:07:18.745+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:07:18.660+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T22:07:18.752+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:07:18.809+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 3.896 seconds
+[2023-02-27T22:07:49.435+0000] {processor.py:153} INFO - Started process (PID=188) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:07:49.437+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:07:49.439+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:07:49.439+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:07:50.127+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:07:50.117+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 34, in <module>
+    aws_access_key_id = Variable.get('AWS_ACCESS_KEY_ID'),
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_ACCESS_KEY_ID does not exist'
+[2023-02-27T22:07:50.131+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:07:50.150+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.719 seconds
+[2023-02-27T22:08:20.819+0000] {processor.py:153} INFO - Started process (PID=230) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:08:20.831+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:08:20.847+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:20.847+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:08:23.994+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:23.956+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/scrape_airflow.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/scrape_airflow.py", line 35, in <module>
+    aws_secret_access_key = Variable.get('AWS_SECRET_ACCESS_KEY')
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/variable.py", line 141, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable AWS_SECRET_ACCESS_KEY does not exist'
+[2023-02-27T22:08:24.001+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:08:24.046+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 3.245 seconds
+[2023-02-27T22:08:54.546+0000] {processor.py:153} INFO - Started process (PID=272) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:08:54.548+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:08:54.551+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:54.550+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:08:55.579+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:08:55.824+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:55.824+0000] {manager.py:504} INFO - Created Permission View: can delete on DAG:Metadata_Airflow
+[2023-02-27T22:08:55.842+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:55.841+0000] {manager.py:504} INFO - Created Permission View: can read on DAG:Metadata_Airflow
+[2023-02-27T22:08:55.858+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:55.858+0000] {manager.py:504} INFO - Created Permission View: can edit on DAG:Metadata_Airflow
+[2023-02-27T22:08:55.859+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:55.859+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:08:55.876+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:55.875+0000] {dag.py:2711} INFO - Creating ORM DAG for Metadata_Airflow
+[2023-02-27T22:08:55.896+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:08:55.896+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:08:55.947+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.410 seconds
+[2023-02-27T22:09:26.349+0000] {processor.py:153} INFO - Started process (PID=314) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:09:26.355+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:09:26.360+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:09:26.360+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:09:28.460+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:09:28.520+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:09:28.518+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:09:28.620+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:09:28.620+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:09:28.695+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 2.358 seconds
+[2023-02-27T22:09:58.876+0000] {processor.py:153} INFO - Started process (PID=356) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:09:58.878+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:09:58.880+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:09:58.880+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:10:00.258+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:10:00.307+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:10:00.306+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:10:00.418+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:10:00.418+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:10:00.527+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.660 seconds
+[2023-02-27T22:10:30.825+0000] {processor.py:153} INFO - Started process (PID=398) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:10:30.826+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:10:30.829+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:10:30.828+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:10:32.362+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:10:32.387+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:10:32.386+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:10:32.427+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:10:32.427+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:10:32.466+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.645 seconds
+[2023-02-27T22:11:02.882+0000] {processor.py:153} INFO - Started process (PID=440) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:11:02.884+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:11:02.887+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:11:02.887+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:11:03.821+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:11:03.840+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:11:03.840+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:11:03.870+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:11:03.869+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:11:03.897+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.032 seconds
+[2023-02-27T22:11:34.315+0000] {processor.py:153} INFO - Started process (PID=489) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:11:34.337+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:11:34.347+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:11:34.346+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:11:37.151+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:11:37.191+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:11:37.191+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:11:37.252+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:11:37.252+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:11:37.311+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 3.003 seconds
+[2023-02-27T22:12:07.981+0000] {processor.py:153} INFO - Started process (PID=524) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:12:07.983+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:12:07.986+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:12:07.985+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:12:09.142+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:12:09.177+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:12:09.176+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:12:09.225+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:12:09.224+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:12:09.283+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.310 seconds
+[2023-02-27T22:12:39.669+0000] {processor.py:153} INFO - Started process (PID=566) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:12:39.670+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:12:39.672+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:12:39.672+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:12:40.574+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:12:40.600+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:12:40.599+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:12:40.645+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:12:40.644+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:12:40.695+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.032 seconds
+[2023-02-27T22:13:11.007+0000] {processor.py:153} INFO - Started process (PID=608) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:13:11.009+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:13:11.010+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:13:11.010+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:13:12.073+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:13:12.116+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:13:12.115+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:13:12.176+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:13:12.175+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:13:12.231+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.227 seconds
+[2023-02-27T22:13:42.317+0000] {processor.py:153} INFO - Started process (PID=650) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:13:42.319+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:13:42.321+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:13:42.321+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:13:43.780+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:13:43.820+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:13:43.818+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:13:43.905+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:13:43.904+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:13:43.978+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.665 seconds
+[2023-02-27T22:14:14.390+0000] {processor.py:153} INFO - Started process (PID=701) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:14:14.395+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:14:14.398+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:14:14.398+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:14:15.922+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:14:15.959+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:14:15.956+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:14:16.037+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:14:16.036+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:14:16.096+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.713 seconds
+[2023-02-27T22:14:46.429+0000] {processor.py:153} INFO - Started process (PID=754) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:14:46.431+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:14:46.433+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:14:46.432+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:14:47.433+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:14:47.469+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:14:47.468+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:14:47.529+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:14:47.528+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:14:47.575+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.152 seconds
+[2023-02-27T22:15:17.695+0000] {processor.py:153} INFO - Started process (PID=796) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:15:17.697+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:15:17.699+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:15:17.698+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:15:18.653+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:15:18.677+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:15:18.676+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:15:18.724+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:15:18.724+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:15:18.778+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.089 seconds
+[2023-02-27T22:15:48.960+0000] {processor.py:153} INFO - Started process (PID=838) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:15:48.962+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:15:48.964+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:15:48.964+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:15:49.837+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:15:49.858+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:15:49.857+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:15:49.889+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:15:49.888+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:15:49.925+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.971 seconds
+[2023-02-27T22:16:20.435+0000] {processor.py:153} INFO - Started process (PID=901) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:16:20.437+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:16:20.439+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:16:20.439+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:16:21.455+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:16:21.484+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:16:21.483+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:16:21.546+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:16:21.546+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:16:21.585+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.154 seconds
+[2023-02-27T22:16:51.686+0000] {processor.py:153} INFO - Started process (PID=943) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:16:51.687+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:16:51.688+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:16:51.688+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:16:52.254+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:16:52.269+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:16:52.268+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:16:52.295+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:16:52.295+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:16:52.326+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.643 seconds
+[2023-02-27T22:17:22.652+0000] {processor.py:153} INFO - Started process (PID=986) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:17:22.653+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:17:22.655+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:17:22.654+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:17:23.483+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:17:23.503+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:17:23.503+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:17:23.536+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:17:23.536+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:17:23.575+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.927 seconds
+[2023-02-27T22:17:53.886+0000] {processor.py:153} INFO - Started process (PID=1048) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:17:53.888+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:17:53.890+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:17:53.890+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:17:54.979+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:17:55.003+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:17:55.002+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:17:55.052+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:17:55.052+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:17:55.102+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 1.226 seconds
+[2023-02-27T22:18:25.403+0000] {processor.py:153} INFO - Started process (PID=1091) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:18:25.405+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:18:25.407+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:18:25.406+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:18:26.161+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:18:26.187+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:18:26.186+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:18:26.235+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:18:26.234+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:18:26.278+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.878 seconds
+[2023-02-27T22:18:56.487+0000] {processor.py:153} INFO - Started process (PID=1133) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:18:56.488+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:18:56.491+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:18:56.490+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:18:58.347+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:18:58.415+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:18:58.412+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:18:58.495+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:18:58.494+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:18:58.598+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 2.122 seconds
+[2023-02-27T22:19:28.766+0000] {processor.py:153} INFO - Started process (PID=1175) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:19:28.767+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:19:28.769+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:19:28.768+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:19:29.524+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:19:29.553+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:19:29.552+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:19:29.595+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:19:29.595+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:19:29.635+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.874 seconds
+[2023-02-27T22:19:59.991+0000] {processor.py:153} INFO - Started process (PID=1227) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:19:59.993+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:19:59.994+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:19:59.994+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:20:00.835+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:20:00.855+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:20:00.855+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:20:00.892+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:20:00.892+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:20:00.934+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.946 seconds
+[2023-02-27T22:20:31.242+0000] {processor.py:153} INFO - Started process (PID=1280) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:20:31.244+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:20:31.246+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:20:31.245+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:20:31.991+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:20:32.013+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:20:32.013+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:20:32.045+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:20:32.045+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:20:32.080+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.842 seconds
+[2023-02-27T22:21:02.333+0000] {processor.py:153} INFO - Started process (PID=1322) to work on /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:21:02.335+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/scrape_airflow.py for tasks to queue
+[2023-02-27T22:21:02.336+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:21:02.336+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:21:03.017+0000] {processor.py:753} INFO - DAG(s) dict_keys(['Metadata_Airflow']) retrieved from /opt/airflow/dags/scrape_airflow.py
+[2023-02-27T22:21:03.043+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:21:03.042+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2023-02-27T22:21:03.084+0000] {logging_mixin.py:137} INFO - [2023-02-27T22:21:03.084+0000] {dag.py:3441} INFO - Setting next_dagrun for Metadata_Airflow to 2023-02-27T05:00:00+00:00, run_after=2023-02-28T05:00:00+00:00
+[2023-02-27T22:21:03.134+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/scrape_airflow.py took 0.803 seconds

@@ -10,6 +10,7 @@ import boto3
 from botocore import UNSIGNED
 from botocore.config import Config
 from decouple import config
+from datetime import datetime
 
 app = FastAPI()
 dbUtil = DbUtil('metadata.db')
@@ -34,12 +35,12 @@ s3_key = 'metadata.db'
 
 
 ########################################################################################################################
-
 @app.get("/")
 async def read_main():
     return {"msg": "Hello World"}
 
-
+########################################################################################################################
+# File APIs
 @app.post("/s3_transfer", status_code=status.HTTP_201_CREATED, dependencies=[Depends(auth_bearer.JWTBearer())],
           tags=['files'])
 # def copy_file_to_dest_s3(src_bucket, dest_bucket, dest_folder, prefix, files_selected):
@@ -80,11 +81,13 @@ def filter(request: schemas.Field_Selection):
     return {'Filter List': filter_list}
 
 
+########################################################################################################################
+# User APIs
 @app.post('/user/register', tags=['user'])
 def register(user: schemas.UserRegisterSchema):
     if not dbUtil.check_user_registered('users', user.email):
-        dbUtil.insert('users', ['first_name', 'last_name', 'email', 'password_hash'],
-                      [(user.first_name, user.last_name, user.email, auth.get_password_hash(user.password))])
+        dbUtil.insert('users', ['first_name', 'last_name', 'email', 'password_hash', 'subscription_tier'],
+                      [(user.first_name, user.last_name, user.email, auth.get_password_hash(user.password), user.subscription_tier)])
         with open(file_path, "rb") as f:
             s3.upload_fileobj(f, dest_bucket, s3_key)
     else:
@@ -100,6 +103,47 @@ def login(user: schemas.UserLoginSchema):
         raise HTTPException(status_code=401, detail='Invalid username and/or password')
 
 
+# Get Current API Status
+# return current status tier and API calls remaining
+@app.get('/user/status', tags=['user'], dependencies=[Depends(auth_bearer.JWTBearer())])
+def api_status(request: schemas.UserSubscriptionSchema):
+    # Get the amount of API Calls remaining in the last hour
+    # now = datetime.now()
+    # current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+    query = f'''SELECT COUNT(*) 
+    FROM USER_API 
+    WHERE EMAIL = '{request.email}'
+            AND DATETIME(TIME_OF_REQUEST) >= DATETIME('{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}', '-1 hour')
+            AND API_TYPE = 'GET'
+            AND API != 'USER_STATUS'
+            AND REQUEST_STATUS = 200;'''
+    
+    curr_api_call_amount = dbUtil.execute_custom_query(query)[0][0]
+
+    subscription_call_limits = {'Free': 10, 'Gold': 15, 'Platinum': 20}
+    api_call_limit = subscription_call_limits[request.subscription_tier]
+
+    # TESTING
+    # curr_api_call_amount = 5
+    # api_call_limit = subscription_call_limits['Free']
+
+    api_calls_remaining = api_call_limit - curr_api_call_amount
+        
+    return {'Subscription Tier': request.subscription_tier, 'API Calls Remaining': api_calls_remaining} 
+
+
+# Upgrade Subscription API
+@app.post('/user/subscription_upgrade', tags=['user'], dependencies=[Depends(auth_bearer.JWTBearer())])
+def subscription_upgrade(user: schemas.UserSubscriptionSchema):
+    dbUtil.update_table('users', 'subscription_tier', user.subscription_tier, 'email', user.email)
+    with open(file_path, "rb") as f:
+        s3.upload_fileobj(f, dest_bucket, s3_key)
+    return {'New Subscription Tier': user.subscription_tier}
+
+
+
+########################################################################################################################
 @app.get('/latlong', tags=['nexrad_radar'])
 def execute_query():
     return {"data": dbUtil.execute_query()}

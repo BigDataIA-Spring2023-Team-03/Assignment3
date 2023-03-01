@@ -23,8 +23,14 @@ class UserRegisterSchema(BaseModel):
     last_name: str
     email: EmailStr
     password: str
+    subscription_tier: str
 
 
 class UserLoginSchema(BaseModel):
     email: EmailStr
     password: str
+
+
+class UserSubscriptionSchema(BaseModel):
+    email: EmailStr
+    subscription_tier: str
