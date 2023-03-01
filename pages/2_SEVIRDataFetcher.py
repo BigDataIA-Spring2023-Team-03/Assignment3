@@ -50,7 +50,7 @@ aws_access_key_id = config('aws_access_key_id')
 aws_secret_access_key = config('aws_secret_access_key')
 
 # Destination S3 Directory:
-dest_bucket = 'damg7245'
+dest_bucket = 'damg7245-db'
 dest_folder = 'assignment1'
 ########################################################################################################################
 
@@ -261,6 +261,18 @@ if not st.session_state.email == "":
         except requests.exceptions.RequestException as err:
             st.error(f"An error occurred: {err}")
 
+        # TRACKING APIS
+        list_of_tuples = [(st.session_state.email, 
+                'Field_Selection-GEOS18-Years', # api
+                'GET', # api_type
+                f"""{data}""", # response_body
+                response.status_code,
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                )]
+        # print(list_of_tuples)
+        # Insert into USER_API for Logging
+        util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
         year_list = response.json().get('Filter List')
         # TESTING
         # st.write(response.json())
@@ -296,6 +308,19 @@ if not st.session_state.email == "":
                     st.error(f"HTTP error occurred: {err}")
             except requests.exceptions.RequestException as err:
                 st.error(f"An error occurred: {err}")
+            
+            # TRACKING APIS
+            list_of_tuples = [(st.session_state.email, 
+                    'Field_Selection-GEOS18-Days', # api
+                    'GET', # api_type
+                    f"""{data}""", # response_body
+                    response.status_code,
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                    )]
+            # print(list_of_tuples)
+            # Insert into USER_API for Logging
+            util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                
             day_list = response.json().get('Filter List')
 
             day_list.insert(0, "")
@@ -326,30 +351,32 @@ if not st.session_state.email == "":
                         st.error(f"HTTP error occurred: {err}")
                 except requests.exceptions.RequestException as err:
                     st.error(f"An error occurred: {err}")
-                hour_list = response.json().get('Filter List')
                 
-                hour_list.insert(0, "")
-                hour_selected = st.selectbox(f'Please select {metadata[3]}', hour_list)
-
                 # TRACKING APIS
-                # Insert into USER_API for Logging
-                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
-                        [(st.session_state.email, 
-                        'Field_Selection-GEOS18-Files', # api
+                list_of_tuples = [(st.session_state.email, 
+                        'Field_Selection-GEOS18-Hours', # api
                         'GET', # api_type
                         f"""{data}""", # response_body
                         response.status_code,
                         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                        )])
+                        )]
+                # print(list_of_tuples)
+                # Insert into USER_API for Logging
+                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)  
+                
+                hour_list = response.json().get('Filter List')
+                
+                hour_list.insert(0, "")
+                hour_selected = st.selectbox(f'Please select {metadata[3]}', hour_list)
                 
                 # TESTING
-                st.write([(st.session_state.email, 
-                        'S3_Transfer', # api
-                        'POST', # api_type
-                        f"""{data}""", # response_body
-                        response.status_code,
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                        )])
+                # st.write([(st.session_state.email, 
+                #         'Field_Selection-GEOS18-Hours', # api
+                #         'GET', # api_type
+                #         f"""{data}""", # response_body
+                #         response.status_code,
+                #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                #         )])  
 
                 if hour_selected:
                     prefix = "ABI-L1b-RadC/"+year_selected+"/"+day_selected+"/"+hour_selected+"/"
@@ -438,6 +465,19 @@ if not st.session_state.email == "":
                 st.error(f"HTTP error occurred: {err}")
         except requests.exceptions.RequestException as err:
             st.error(f"An error occurred: {err}")
+
+        # TRACKING APIS
+        list_of_tuples = [(st.session_state.email, 
+                'Field_Selection-NEXRAD-Years', # api
+                'GET', # api_type
+                f"""{data}""", # response_body
+                response.status_code,
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                )]
+        # print(list_of_tuples)
+        # Insert into USER_API for Logging
+        util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
         year_list = response.json().get('Filter List')
 
         year_list.insert(0, "")
@@ -464,6 +504,19 @@ if not st.session_state.email == "":
                     st.error(f"HTTP error occurred: {err}")
             except requests.exceptions.RequestException as err:
                 st.error(f"An error occurred: {err}")
+            
+            # TRACKING APIS
+            list_of_tuples = [(st.session_state.email, 
+                    'Field_Selection-NEXRAD-Months', # api
+                    'GET', # api_type
+                    f"""{data}""", # response_body
+                    response.status_code,
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                    )]
+            # print(list_of_tuples)
+            # Insert into USER_API for Logging
+            util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                
             month_list = response.json().get('Filter List')
 
             month_list.insert(0, "")
@@ -493,8 +546,20 @@ if not st.session_state.email == "":
                         st.error(f"HTTP error occurred: {err}")
                 except requests.exceptions.RequestException as err:
                     st.error(f"An error occurred: {err}")
-                day_list = response.json().get('Filter List')
+                
+                # TRACKING APIS
+                list_of_tuples = [(st.session_state.email, 
+                        'Field_Selection-NEXRAD-Days', # api
+                        'GET', # api_type
+                        f"""{data}""", # response_body
+                        response.status_code,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                        )]
+                # print(list_of_tuples)
+                # Insert into USER_API for Logging
+                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
 
+                day_list = response.json().get('Filter List')
                 
                 day_list.insert(0, "")
                 day_selected = st.selectbox(
@@ -524,22 +589,24 @@ if not st.session_state.email == "":
                             st.error(f"HTTP error occurred: {err}")
                     except requests.exceptions.RequestException as err:
                         st.error(f"An error occurred: {err}")
+                    
+                    # TRACKING APIS
+                    list_of_tuples = [(st.session_state.email, 
+                            'Field_Selection-NEXRAD-Stations', # api
+                            'GET', # api_type
+                            f"""{data}""", # response_body
+                            response.status_code,
+                            datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                            )]
+                    # print(list_of_tuples)
+                    # Insert into USER_API for Logging
+                    util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                        
                     station_list = response.json().get('Filter List')
                     
                     station_list.insert(0, "")
                     station_selected = st.selectbox(
                     f'Please select {metadata[3]}', station_list)
-
-                    # TRACKING APIS
-                    # Insert into USER_API for Logging
-                    util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
-                            [(st.session_state.email, 
-                            'Field_Selection-NEXRAD-Files', # api
-                            'GET', # api_type
-                            f"""{data}""", # response_body
-                            response.status_code,
-                            datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                            )])
 
                     if station_selected:
                         prefix = year_selected +"/"+month_selected+"/"+day_selected+"/"+station_selected+"/"
@@ -610,33 +677,34 @@ if not st.session_state.email == "":
                 response = requests.post(url = 'http://backend:8000/s3_transfer', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
                 if response.status_code == 409:
                     st.error(f'{file_name} already transferred to S3!')
+                
+                # TRACKING APIS
+                list_of_tuples = [(st.session_state.email, 
+                        'S3_Transfer', # api
+                        'POST', # api_type
+                        f"""{data}""", # response_body
+                        response.status_code,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                        )]
+                # print(list_of_tuples)
+                # Insert into USER_API for Logging
+                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                
+                # TESTING
+                # st.write([(st.session_state.email, 
+                #         'S3_Transfer', # api
+                #         'POST', # api_type
+                #         f"""{data}""", # response_body
+                #         response.status_code,
+                #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                #         )])
+                    
                 dest_url = response.json().get('Destination s3 URL')
 
                 aws_logging.write_logs(f'User Action: Transfered file to S3 Bucket - {dest_url}')
                 if 'Error' in dest_url:
                     st.write(dest_url)
                 st.write(f'Destination s3 URL: {dest_url}')
-
-                # TRACKING APIS
-                # Insert into USER_API for Logging
-                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
-                        [(st.session_state.email, 
-                        'S3_Transfer', # api
-                        'POST', # api_type
-                        f"""{data}""", # response_body
-                        response.status_code,
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                        )])
-                
-                # TESTING
-                st.write([(st.session_state.email, 
-                        'S3_Transfer', # api
-                        'POST', # api_type
-                        f"""{data}""", # response_body
-                        response.status_code,
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                        )])
-
 
     util.conn.close()
 else:

@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import json
 from streamlit_extras.switch_page_button import switch_page
+from Util.DbUtil import *
+from datetime import datetime
 
 #########################################
 # Pages:
@@ -37,6 +39,12 @@ if 'logged_in' not in st.session_state:
 if 'logout_disabled' not in st.session_state:
     st.session_state.logged_in = True
 
+########################################################################################################################
+
+util = DbUtil("metadata.db")
+
+########################################################################################################################
+
 first_name = st.text_input("First Name", st.session_state.first_name, placeholder='First Name')
 last_name = st.text_input("Last Name", st.session_state.last_name, placeholder='Last Name')
 email = st.text_input("Email", st.session_state.email, placeholder='Email')
@@ -59,6 +67,20 @@ if register_submit:
         'subscription_tier': st.session_state.subscription_tier
     }
     res = requests.post(url='http://backend:8000/user/register', data=json.dumps(register_user))
+
+    # TRACKING APIS
+    # Insert into USER_API for Logging
+    list_of_tuples = [(st.session_state.email, 
+                       'Register', 
+                       'POST', 
+                       f"""{json.dumps(register_user)}""", 
+                       res.status_code, 
+                       datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
+    # print(list_of_tuples)
+    # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
+    util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
+
     if res and res.status_code == 200:
         st.session_state.access_token = res.json()['access_token']
         st.session_state.register_disabled = True

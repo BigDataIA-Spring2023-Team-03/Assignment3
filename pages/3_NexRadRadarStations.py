@@ -4,6 +4,7 @@ import pandas as pd
 from streamlit_folium import st_folium
 from Util.DbUtil import DbUtil
 import requests
+from datetime import datetime
 
 
 if 'email' not in st.session_state:
@@ -39,6 +40,20 @@ if not st.session_state.email == "":
     conn = util.conn
 
     res = requests.get(url='http://backend:8000/latlong')
+
+    # TRACKING APIS
+    list_of_tuples = [(st.session_state.email, 
+            'NEXRAD_Radar', # api
+            'GET', # api_type
+            f"""""", # response_body
+            res.status_code,
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+            )]
+    # print(list_of_tuples)
+    # Insert into USER_API for Logging
+    util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                
+
     if res and res.status_code == 200:
         l = eval(res.json()['data'])
         data = pd.DataFrame(l, columns=["station", "LAT", "LONG", "city"])
