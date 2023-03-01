@@ -4,7 +4,6 @@ from dataclasses import dataclass
 import requests
 import json
 load_dotenv()
-
 app = typer.Typer(add_completion=False)
 
 
