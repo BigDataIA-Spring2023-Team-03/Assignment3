@@ -3,6 +3,7 @@ import requests
 import json
 from streamlit_extras.switch_page_button import switch_page
 from Util.DbUtil import *
+from datetime import datetime
 
 #########################################
 # Pages:
@@ -59,6 +60,19 @@ if login_submit:
         'password': st.session_state.password
     }
     res = requests.post(url='http://backend:8000/user/login', data=json.dumps(login_user))
+
+    # TRACKING APIS
+    # Insert into USER_API for Logging
+    list_of_tuples = [(st.session_state.email, 
+                       'Login', 
+                       'POST', 
+                       f"""{json.dumps(login_user)}""", 
+                       res.status_code, 
+                       datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
+    # print(list_of_tuples)
+    # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
+    util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
     if res and res.status_code == 200:
         # st.experimental_rerun()
         st.session_state.access_token = res.json()['access_token']

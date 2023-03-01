@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-from Util.DbUtil import DbUtil
+from Util.DbUtil import *
+from datetime import datetime
 import requests
 
 
@@ -30,6 +31,12 @@ with st.sidebar:
         st.session_state.register_disabled = False
         st.experimental_rerun()
 ###################################################################################
+########################################################################################################################
+
+util = DbUtil("metadata.db")
+
+########################################################################################################################
+
 
 st.title("Subscription Information")
 if not st.session_state.email == "":
@@ -69,7 +76,7 @@ if not st.session_state.email == "":
     
     if st.button('Upgrade Subscription'):
         # TESTING
-        st.write(subscription_tier)
+        # st.write(subscription_tier)
 
         if subscription_tier != '':
             if subscription_tier != st.session_state.subscription_tier:
@@ -78,6 +85,20 @@ if not st.session_state.email == "":
                     'subscription_tier': subscription_tier
                 }
                 res = requests.post(url='http://backend:8000/user/subscription_upgrade', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
+                
+                # TRACKING APIS
+                # Insert into USER_API for Logging
+                list_of_tuples = [(st.session_state.email, 
+                                'Subscription_Upgrade', 
+                                'POST', 
+                                f"""{data}""", 
+                                res.status_code, 
+                                datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
+                # print(list_of_tuples)
+                # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
+                util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
+
                 # TESTING
                 # st.write(data)
                 # st.write(f'Bearer {st.session_state.access_token}')
