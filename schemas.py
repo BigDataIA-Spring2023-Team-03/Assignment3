@@ -24,6 +24,7 @@ class UserRegisterSchema(BaseModel):
     email: EmailStr
     password: str
     subscription_tier: str
+    is_admin: int
 
 
 class UserLoginSchema(BaseModel):

@@ -17,6 +17,9 @@ from datetime import datetime
 if 'email' not in st.session_state:
     st.session_state.email = ''
 
+if 'subscription_tier' not in st.session_state:
+    st.session_state.subscription_tier = ''
+
 if 'logout_disabled' not in st.session_state:
     st.session_state.logout_disabled = True
 
@@ -29,11 +32,14 @@ with st.sidebar:
     user = "Not Logged In" if st.session_state.email == "" else st.session_state.email
     st.write(f'Current User: {user}')
     st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
+    st.write(f'Remaining API Calls: {st.session_state.api_calls}')
     logout_submit = st.button('LogOut', disabled=st.session_state.logout_disabled)
     if logout_submit:
         for key in st.session_state.keys():
-            if key == 'login_disabled' or key == 'logout_disabled' or key == 'register_disabled'or key == 'logged_in':
+            if key == 'login_disabled' or key == 'logout_disabled' or key == 'register_disabled' or key == 'logged_in':
                 st.session_state[key] = not st.session_state[key]
+            elif key == 'api_calls':
+                st.session_state[key] = -100
             else:
                 st.session_state[key] = ''
         st.session_state.login_disabled = False
@@ -55,7 +61,7 @@ dest_folder = 'assignment1'
 ########################################################################################################################
 
 st.title('SEVIR Data Fetcher')
-if not st.session_state.email == "":
+if not st.session_state.email == "" and st.session_state.api_calls > 0:
     # SELECT DATASOURCE:
     data_source = st.selectbox('Data Source: ', ['GOES-18 geostationary satellite', 'NEXRAD weather radars'])
 
@@ -262,16 +268,16 @@ if not st.session_state.email == "":
             st.error(f"An error occurred: {err}")
 
         # TRACKING APIS
-        list_of_tuples = [(st.session_state.email, 
-                'Field_Selection-GEOS18-Years', # api
-                'GET', # api_type
-                f"""{data}""", # response_body
-                response.status_code,
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                )]
-        # print(list_of_tuples)
-        # Insert into USER_API for Logging
-        util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+        # list_of_tuples = [(st.session_state.email,
+        #         'Field_Selection-GEOS18-Years', # api
+        #         'GET', # api_type
+        #         f"""{data}""", # response_body
+        #         response.status_code,
+        #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+        #         )]
+        # # print(list_of_tuples)
+        # # Insert into USER_API for Logging
+        # util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
 
         year_list = response.json().get('Filter List')
         # TESTING
@@ -309,18 +315,18 @@ if not st.session_state.email == "":
             except requests.exceptions.RequestException as err:
                 st.error(f"An error occurred: {err}")
             
-            # TRACKING APIS
-            list_of_tuples = [(st.session_state.email, 
-                    'Field_Selection-GEOS18-Days', # api
-                    'GET', # api_type
-                    f"""{data}""", # response_body
-                    response.status_code,
-                    datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                    )]
-            # print(list_of_tuples)
-            # Insert into USER_API for Logging
-            util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
-                
+            # TRACKING API
+            # list_of_tuples = [(st.session_state.email,
+            #                    'Field_Selection-GEOS18-Days',  # api
+            #                    'GET',  # api_type
+            #                    f"""{data}""",  # response_body
+            #                    response.status_code,
+            #                    datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # time_of_request
+            #                    )]
+            # # print(list_of_tuples)
+            # # Insert into USER_API for Logging
+            # util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
+            #             list_of_tuples)
             day_list = response.json().get('Filter List')
 
             day_list.insert(0, "")
@@ -353,16 +359,16 @@ if not st.session_state.email == "":
                     st.error(f"An error occurred: {err}")
                 
                 # TRACKING APIS
-                list_of_tuples = [(st.session_state.email, 
-                        'Field_Selection-GEOS18-Hours', # api
-                        'GET', # api_type
-                        f"""{data}""", # response_body
-                        response.status_code,
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                        )]
-                # print(list_of_tuples)
-                # Insert into USER_API for Logging
-                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)  
+                # list_of_tuples = [(st.session_state.email,
+                #         'Field_Selection-GEOS18', # api
+                #         'GET', # api_type
+                #         f"""{data}""", # response_body
+                #         response.status_code,
+                #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                #         )]
+                # # print(list_of_tuples)
+                # # Insert into USER_API for Logging
+                # util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
                 
                 hour_list = response.json().get('Filter List')
                 
@@ -379,6 +385,9 @@ if not st.session_state.email == "":
                 #         )])  
 
                 if hour_selected:
+
+
+
                     prefix = "ABI-L1b-RadC/"+year_selected+"/"+day_selected+"/"+hour_selected+"/"
                     result = s3.list_objects(Bucket=BUCKET_NAME, Prefix=prefix, Delimiter='/')
                     for item in result['Contents']:
@@ -425,6 +434,26 @@ if not st.session_state.email == "":
                         aws_logging.write_logs(f'User Input: {user_inputs}')
                         aws_logging.write_logs(f'Generated URL: {url}')
 
+                        list_of_tuples = [(st.session_state.email,
+                                           'Field_Selection-GEOS18',  # api
+                                           'GET',  # api_type
+                                           f"""{data}""",  # response_body
+                                           response.status_code,
+                                           datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # time_of_request
+                                           )]
+                        # print(list_of_tuples)
+                        # Insert into USER_API for Logging
+                        util.insert('user_api',
+                                    ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
+                                    list_of_tuples)
+
+                        res2 = requests.get(url='http://backend:8000/user/status',
+                                            params={'email': st.session_state.email,
+                                                    'subscription_tier': st.session_state.subscription_tier},
+                                            headers={'Authorization': f'Bearer {st.session_state.access_token}'})
+
+                        st.session_state.api_calls = res2.json().get('API Calls Remaining')
+
                         st.text("")
                         st.text("")
                         st.text("")
@@ -467,16 +496,16 @@ if not st.session_state.email == "":
             st.error(f"An error occurred: {err}")
 
         # TRACKING APIS
-        list_of_tuples = [(st.session_state.email, 
-                'Field_Selection-NEXRAD-Years', # api
-                'GET', # api_type
-                f"""{data}""", # response_body
-                response.status_code,
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                )]
-        # print(list_of_tuples)
-        # Insert into USER_API for Logging
-        util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+        # list_of_tuples = [(st.session_state.email,
+        #         'Field_Selection-NEXRAD-Years', # api
+        #         'GET', # api_type
+        #         f"""{data}""", # response_body
+        #         response.status_code,
+        #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+        #         )]
+        # # print(list_of_tuples)
+        # # Insert into USER_API for Logging
+        # util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
 
         year_list = response.json().get('Filter List')
 
@@ -506,16 +535,16 @@ if not st.session_state.email == "":
                 st.error(f"An error occurred: {err}")
             
             # TRACKING APIS
-            list_of_tuples = [(st.session_state.email, 
-                    'Field_Selection-NEXRAD-Months', # api
-                    'GET', # api_type
-                    f"""{data}""", # response_body
-                    response.status_code,
-                    datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                    )]
-            # print(list_of_tuples)
-            # Insert into USER_API for Logging
-            util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+            # list_of_tuples = [(st.session_state.email,
+            #         'Field_Selection-NEXRAD-Months', # api
+            #         'GET', # api_type
+            #         f"""{data}""", # response_body
+            #         response.status_code,
+            #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+            #         )]
+            # # print(list_of_tuples)
+            # # Insert into USER_API for Logging
+            # util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
                 
             month_list = response.json().get('Filter List')
 
@@ -548,16 +577,16 @@ if not st.session_state.email == "":
                     st.error(f"An error occurred: {err}")
                 
                 # TRACKING APIS
-                list_of_tuples = [(st.session_state.email, 
-                        'Field_Selection-NEXRAD-Days', # api
-                        'GET', # api_type
-                        f"""{data}""", # response_body
-                        response.status_code,
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                        )]
-                # print(list_of_tuples)
-                # Insert into USER_API for Logging
-                util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                # list_of_tuples = [(st.session_state.email,
+                #         'Field_Selection-NEXRAD-Days', # api
+                #         'GET', # api_type
+                #         f"""{data}""", # response_body
+                #         response.status_code,
+                #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
+                #         )]
+                # # print(list_of_tuples)
+                # # Insert into USER_API for Logging
+                # util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
 
                 day_list = response.json().get('Filter List')
                 
@@ -591,16 +620,7 @@ if not st.session_state.email == "":
                         st.error(f"An error occurred: {err}")
                     
                     # TRACKING APIS
-                    list_of_tuples = [(st.session_state.email, 
-                            'Field_Selection-NEXRAD-Stations', # api
-                            'GET', # api_type
-                            f"""{data}""", # response_body
-                            response.status_code,
-                            datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-                            )]
-                    # print(list_of_tuples)
-                    # Insert into USER_API for Logging
-                    util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
                         
                     station_list = response.json().get('Filter List')
                     
@@ -645,6 +665,16 @@ if not st.session_state.email == "":
                             st.write(url == public_url)
                             aws_logging.write_logs(f'User Input: {user_inputs}')
                             aws_logging.write_logs(f'Generated URL: {url}')
+
+                            list_of_tuples = [(st.session_state.email,
+                                               'Field_Selection-NEXRAD',  # api
+                                               'GET',  # api_type
+                                               f"""{data}""",  # response_body
+                                               response.status_code,
+                                               datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # time_of_request
+                                               )]
+                            util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status',
+                                                     'time_of_request'], list_of_tuples)
 
                             st.text("")
                             st.text("")

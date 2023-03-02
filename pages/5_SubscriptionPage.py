@@ -8,6 +8,9 @@ import requests
 if 'email' not in st.session_state:
     st.session_state.email = ''
 
+if 'subscription_tier' not in st.session_state:
+    st.session_state.subscription_tier = ''
+
 if 'logout_disabled' not in st.session_state:
     st.session_state.logout_disabled = True
 
@@ -20,11 +23,14 @@ with st.sidebar:
     user = "Not Logged In" if st.session_state.email == "" else st.session_state.email
     st.write(f'Current User: {user}')
     st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
+    st.write(f'Remaining API Calls: {st.session_state.api_calls}')
     logout_submit = st.button('LogOut', disabled=st.session_state.logout_disabled)
     if logout_submit:
         for key in st.session_state.keys():
             if key == 'login_disabled' or key == 'logout_disabled' or key == 'register_disabled' or key == 'logged_in':
                 st.session_state[key] = not st.session_state[key]
+            elif key == 'api_calls':
+                st.session_state[key] = -100
             else:
                 st.session_state[key] = ''
         st.session_state.login_disabled = False
@@ -39,8 +45,7 @@ util = DbUtil("metadata.db")
 
 
 st.title("Subscription Information")
-if not st.session_state.email == "":
-    util = DbUtil('metadata.db')
+if not st.session_state.email == "" and st.session_state.api_calls > 0:
     conn = util.conn
 
     # Check API Requests Remaining
@@ -49,14 +54,10 @@ if not st.session_state.email == "":
                 'email': st.session_state.email,
                 'subscription_tier': st.session_state.subscription_tier
                 }
-        res = requests.get(url='http://backend:8000/user/status', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
-        # TESTING
-        # st.write(data)
-        # st.write(f'Bearer {st.session_state.access_token}')
+        res = requests.get(url='http://backend:8000/user/status', params= {'email': st.session_state.email, 'subscription_tier': st.session_state.subscription_tier}, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
         
         if res and res.status_code == 200:
             api_calls_remaining = res.json().get('API Calls Remaining')
-
             st.write(f'You currently have {api_calls_remaining} API calls remaining.')
             st.write('Use the Upgrade Subscription button below to unlock more API Calls!')
 
@@ -97,11 +98,12 @@ if not st.session_state.email == "":
                 # print(list_of_tuples)
                 # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
                 util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                res2 = requests.get(url='http://backend:8000/user/status',
+                                    params={'email': st.session_state.email,
+                                            'subscription_tier': st.session_state.subscription_tier},
+                                    headers={'Authorization': f'Bearer {st.session_state.access_token}'})
 
-
-                # TESTING
-                # st.write(data)
-                # st.write(f'Bearer {st.session_state.access_token}')
+                st.session_state.api_calls = res2.json().get('API Calls Remaining')
 
                 if res and res.status_code == 200:
                     # If it works update the session state

@@ -44,7 +44,8 @@ async def read_main():
 @app.post("/s3_transfer", status_code=status.HTTP_201_CREATED, dependencies=[Depends(auth_bearer.JWTBearer())],
           tags=['files'])
 # def copy_file_to_dest_s3(src_bucket, dest_bucket, dest_folder, prefix, files_selected):
-def copy_file_to_dest_s3(request: schemas.S3_Transfer, response: Response):
+async def copy_file_to_dest_s3(request: schemas.S3_Transfer, response: Response):
+    dbUtil = DbUtil('metadata.db')
     # Get S3 File:
     s3_src = boto3.client('s3', config=Config(signature_version=UNSIGNED))
 
@@ -76,7 +77,8 @@ def copy_file_to_dest_s3(request: schemas.S3_Transfer, response: Response):
 # GET metadata options for
 @app.get("/field_selection", status_code=status.HTTP_200_OK, dependencies=[Depends(auth_bearer.JWTBearer())],
          tags=['files'])
-def filter(request: schemas.Field_Selection):
+async def filter(request: schemas.Field_Selection):
+    dbUtil = DbUtil('metadata.db')
     filter_list = dbUtil.filter(request.table_name, request.req_value, **request.input_values)
     return {'Filter List': filter_list}
 
@@ -84,10 +86,11 @@ def filter(request: schemas.Field_Selection):
 ########################################################################################################################
 # User APIs
 @app.post('/user/register', tags=['user'])
-def register(user: schemas.UserRegisterSchema):
+async def register(user: schemas.UserRegisterSchema):
+    dbUtil = DbUtil('metadata.db')
     if not dbUtil.check_user_registered('users', user.email):
-        dbUtil.insert('users', ['first_name', 'last_name', 'email', 'password_hash', 'subscription_tier'],
-                      [(user.first_name, user.last_name, user.email, auth.get_password_hash(user.password), user.subscription_tier)])
+        dbUtil.insert('users', ['first_name', 'last_name', 'email', 'password_hash', 'subscription_tier', 'admin'],
+                      [(user.first_name, user.last_name, user.email, auth.get_password_hash(user.password), user.subscription_tier, user.is_admin)])
         with open(file_path, "rb") as f:
             s3.upload_fileobj(f, dest_bucket, s3_key)
     else:
@@ -96,7 +99,8 @@ def register(user: schemas.UserRegisterSchema):
 
 
 @app.post('/user/login', tags=['user'])
-def login(user: schemas.UserLoginSchema):
+async def login(user: schemas.UserLoginSchema):
+    dbUtil = DbUtil('metadata.db')
     if dbUtil.check_user('users', user.email, user.password):
         return auth.signJWT(user.email)
     else:
@@ -106,23 +110,24 @@ def login(user: schemas.UserLoginSchema):
 # Get Current API Status
 # return current status tier and API calls remaining
 @app.get('/user/status', tags=['user'], dependencies=[Depends(auth_bearer.JWTBearer())])
-def api_status(request: schemas.UserSubscriptionSchema):
+async def api_status(email: str, subscription_tier: str):
     # Get the amount of API Calls remaining in the last hour
     # now = datetime.now()
     # current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+    dbUtil = DbUtil('metadata.db')
 
     query = f'''SELECT COUNT(*) 
     FROM USER_API 
-    WHERE EMAIL = '{request.email}'
-            AND DATETIME(TIME_OF_REQUEST) >= DATETIME('{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}', '-1 hour')
-            AND API_TYPE = 'GET'
-            AND API != 'USER_STATUS'
-            AND REQUEST_STATUS = 200;'''
+    WHERE EMAIL = '{email}'
+            AND DATETIME(time_of_request) >= datetime(strftime('%Y-%m-%d %H:00:00'))
+            AND api_type = 'GET'
+            AND api != 'USER_STATUS'
+            AND request_status = 200;'''
     
     curr_api_call_amount = dbUtil.execute_custom_query(query)[0][0]
 
     subscription_call_limits = {'Free': 10, 'Gold': 15, 'Platinum': 20}
-    api_call_limit = subscription_call_limits[request.subscription_tier]
+    api_call_limit = subscription_call_limits[subscription_tier]
 
     # TESTING
     # curr_api_call_amount = 5
@@ -130,12 +135,13 @@ def api_status(request: schemas.UserSubscriptionSchema):
 
     api_calls_remaining = api_call_limit - curr_api_call_amount
         
-    return {'Subscription Tier': request.subscription_tier, 'API Calls Remaining': api_calls_remaining} 
+    return {'Subscription Tier': subscription_tier, 'API Calls Remaining': api_calls_remaining}
 
 
 # Upgrade Subscription API
 @app.post('/user/subscription_upgrade', tags=['user'], dependencies=[Depends(auth_bearer.JWTBearer())])
-def subscription_upgrade(user: schemas.UserSubscriptionSchema):
+async def subscription_upgrade(user: schemas.UserSubscriptionSchema):
+    dbUtil = DbUtil('metadata.db')
     dbUtil.update_table('users', 'subscription_tier', user.subscription_tier, 'email', user.email)
     with open(file_path, "rb") as f:
         s3.upload_fileobj(f, dest_bucket, s3_key)
@@ -145,5 +151,6 @@ def subscription_upgrade(user: schemas.UserSubscriptionSchema):
 
 ########################################################################################################################
 @app.get('/latlong', tags=['nexrad_radar'])
-def execute_query():
+async def execute_query():
+    dbUtil = DbUtil('metadata.db')
     return {"data": dbUtil.execute_query()}

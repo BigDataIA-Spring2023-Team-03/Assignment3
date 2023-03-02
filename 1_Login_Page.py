@@ -42,6 +42,9 @@ if 'register_disabled' not in st.session_state:
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
+if 'api_calls' not in st.session_state:
+    st.session_state.api_calls = -100
+
 ########################################################################################################################
 
 util = DbUtil("metadata.db")
@@ -71,7 +74,7 @@ if login_submit:
                        datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
     # print(list_of_tuples)
     # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
-    util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+    # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
 
     if res and res.status_code == 200:
         # st.experimental_rerun()
@@ -85,6 +88,11 @@ if login_submit:
         WHERE EMAIL = '{st.session_state.email}';'''
 
         st.session_state.subscription_tier = util.execute_custom_query(query)[0][0]
+        res2 = requests.get(url='http://backend:8000/user/status', params={'email': st.session_state.email,
+                                                                          'subscription_tier': st.session_state.subscription_tier},
+                           headers={'Authorization': f'Bearer {st.session_state.access_token}'})
+
+        st.session_state.api_calls = res2.json().get('API Calls Remaining')
 
         # TESTING
         # st.write(query)
@@ -103,6 +111,7 @@ with st.sidebar:
     if st.session_state and st.session_state.logged_in and st.session_state.email:
         st.write(f'Current User: {st.session_state.email}')
         st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
+        st.write(f'Remaining API Calls: {st.session_state.api_calls}')
     else:
         st.write('Current User: Not Logged In')
 
@@ -111,6 +120,8 @@ with st.sidebar:
         for key in st.session_state.keys():
             if key == 'login_disabled' or key == 'logout_disabled' or key == 'register_disabled' or key == 'logged_in':
                 st.session_state[key] = not st.session_state[key]
+            elif key == 'api_calls':
+                st.session_state[key] = -100
             else:
                 st.session_state[key] = ''
         st.session_state.login_disabled = False

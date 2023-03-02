@@ -10,6 +10,9 @@ from datetime import datetime
 if 'email' not in st.session_state:
     st.session_state.email = ''
 
+if 'subscription_tier' not in st.session_state:
+    st.session_state.subscription_tier = ''
+
 if 'logout_disabled' not in st.session_state:
     st.session_state.logout_disabled = True
 
@@ -22,11 +25,14 @@ with st.sidebar:
     user = "Not Logged In" if st.session_state.email == "" else st.session_state.email
     st.write(f'Current User: {user}')
     st.write(f'Subscription Tier: {st.session_state.subscription_tier}')
+    st.write(f'Remaining API Calls: {st.session_state.api_calls}')
     logout_submit = st.button('LogOut', disabled=st.session_state.logout_disabled)
     if logout_submit:
         for key in st.session_state.keys():
             if key == 'login_disabled' or key == 'logout_disabled' or key == 'register_disabled' or key == 'logged_in':
                 st.session_state[key] = not st.session_state[key]
+            elif key == 'api_calls':
+                st.session_state[key] = -100
             else:
                 st.session_state[key] = ''
         st.session_state.login_disabled = False
@@ -35,23 +41,14 @@ with st.sidebar:
 ###################################################################################
 
 st.title("NexRad Radar Stations")
-if not st.session_state.email == "":
+if not st.session_state.email == "" and st.session_state.api_calls > 0:
     util = DbUtil('metadata.db')
     conn = util.conn
 
     res = requests.get(url='http://backend:8000/latlong')
 
     # TRACKING APIS
-    list_of_tuples = [(st.session_state.email, 
-            'NEXRAD_Radar', # api
-            'GET', # api_type
-            f"""""", # response_body
-            res.status_code,
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
-            )]
-    # print(list_of_tuples)
-    # Insert into USER_API for Logging
-    util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+
                 
 
     if res and res.status_code == 200:
@@ -71,6 +68,22 @@ if not st.session_state.email == "":
             tooltip=[location_info["LAT"], location_info["LONG"], "Station: " + location_info["station"], "City: " + location_info["city"]]).add_to(map)
 
         st_data = st_folium(map, width=725)
+        list_of_tuples = [(st.session_state.email,
+                           'NEXRAD_Radar',  # api
+                           'GET',  # api_type
+                           f"""""",  # response_body
+                           res.status_code,
+                           datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # time_of_request
+                           )]
+        # print(list_of_tuples)
+        # Insert into USER_API for Logging
+        util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'],
+                    list_of_tuples)
+        res2 = requests.get(url='http://backend:8000/user/status', params={'email': st.session_state.email,
+                                                                           'subscription_tier': st.session_state.subscription_tier},
+                            headers={'Authorization': f'Bearer {st.session_state.access_token}'})
+
+        st.session_state.api_calls = res2.json().get('API Calls Remaining')
     elif res and res.status_code == 403:
         st.session_state.logout_disabled = False
         error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Session TimedOut, Sign Back In!</p>"""
