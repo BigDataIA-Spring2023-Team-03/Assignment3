@@ -119,7 +119,8 @@ async def api_status(email: str, subscription_tier: str):
     query = f'''SELECT COUNT(*) 
     FROM USER_API 
     WHERE EMAIL = '{email}'
-            AND DATETIME(time_of_request) >= datetime(strftime('%Y-%m-%d %H:00:00'))
+            AND DATETIME(TIME_OF_REQUEST) >= DATETIME('{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}', '-1 hour')
+            -- AND DATETIME(time_of_request) >= datetime(strftime('%Y-%m-%d %H:00:00'))
             AND api_type = 'GET'
             AND api != 'USER_STATUS'
             AND request_status = 200;'''
