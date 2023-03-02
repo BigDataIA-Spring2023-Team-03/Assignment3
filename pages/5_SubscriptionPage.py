@@ -109,6 +109,15 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
                     # If it works update the session state
                     st.session_state.subscription_tier = subscription_tier
 
+                    # Refresh the API Calls Remaining
+                    res2 = requests.get(url='http://backend:8000/user/status',
+                                    params={'email': st.session_state.email,
+                                            'subscription_tier': st.session_state.subscription_tier},
+                                    headers={'Authorization': f'Bearer {st.session_state.access_token}'})
+
+                    st.session_state.api_calls = res2.json().get('API Calls Remaining')
+
+                    st.session_state.api_calls = res2.json().get('API Calls Remaining')
                     st.write(f'''Your Subscription Tier has been updated to {st.session_state.subscription_tier}!''') # TODO #, you now have {subscription_tier.split('-')[1]} API Calls/hour!''')
                 
                 elif res and res.status_code == 403:
