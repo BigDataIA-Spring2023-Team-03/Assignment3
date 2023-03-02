@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "typerpackage"
+version = "0.1.0"
+description = "This is Group 3's Fast API Cli wheel package"
+authors = ["Raj Mehta"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = "^0.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+typerpackage = "typerpackage.app"

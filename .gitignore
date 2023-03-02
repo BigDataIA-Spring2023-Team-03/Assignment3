@@ -14,3 +14,4 @@ great_expectations/uncommitted/validations
 
 jv_test.py
 __pycache__/
+fastapicli.py
