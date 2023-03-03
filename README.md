@@ -25,17 +25,28 @@ You use Typer CLI in your terminal, to run your scripts as an alternative to cal
 Here are some Basic Commands for our cliapi.py 
 
  Usage: cliapi.py [OPTIONS] COMMAND [ARGS]...                                                                                                                      
- Common Entry Point                                
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *  --email           TEXT  Username [env var: APP_USERNAME] [default: None] [required]                                                                               │
-│ *  --password        TEXT  Password [env var: APP_PASSWORD] [default: None] [required]                                                                               │
-│    --help                  Show this message and exit.                                                                                                               │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ Common Entry Point                                
+
+╭─ Options ──────────────────────────────────────────────────────────────────────────────╮
+
+│ *  --email           TEXT  Username [env var: APP_USERNAME] [default: None] [required] |                                                                                                                              │
+
+│ *  --password        TEXT  Password [env var: APP_PASSWORD] [default: None] [required] |                                                                                                                              │
+
+│    --help                  Show this message and exit.                                 |                                                                                                                              │
+
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
 ╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ feild-selection                                                                                                                                                      │
-│ lat-long                                                                                                                                                             │
-│ s3-bucket                                                                                                                                                            │
-│ user-register                                                                                                                                                        │
+
+│ feild-selection                                                                                                                                                      │
+
+│ lat-long                                                                                                                                                             │
+
+│ s3-bucket                                                                                                                                                            │
+
+│ user-register                                                                                                                                                        │
+
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 Here are list of some basic command examples:
