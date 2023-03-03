@@ -124,6 +124,10 @@ The CLI was built by the BigDataIA-Spring2023-Team-03 group as part of this assi
 
 For Detailed documentation- [Click here](https://codelabs-preview.appspot.com/?file_id=13Lu_KA8h4WPHTBIyg0DzN-B6zXmzNwb8xc2egh3dOjk)
 
+## Live Application Link
+
+[Application Link](http://52.201.212.226:8501/)
+
 ## Contributions
 
 - Raj Mehta - 25%
