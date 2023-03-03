@@ -16,6 +16,42 @@ Here we have used the Typer library to define a command-line interface applicati
 
 We have used Docker containers to containerize our application into three separate containers. Two of these containers, namely, the front-end and back-end container, can communicate with each other, which we have defined in the docker-compose.yaml file. 
 
+## CLI
+
+We have used typer-cli module to build CLI for our FAST Api. Typer CLI is a command line application to run simple programs created with Typer, with completion in your terminal 🚀.
+
+You use Typer CLI in your terminal, to run your scripts as an alternative to calling python directly
+
+Here are some Basic Commands for our cliapi.py 
+
+ Usage: cliapi.py [OPTIONS] COMMAND [ARGS]...                                                                                                                      
+ Common Entry Point                                
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --email           TEXT  Username [env var: APP_USERNAME] [default: None] [required]                                                                               │
+│ *  --password        TEXT  Password [env var: APP_PASSWORD] [default: None] [required]                                                                               │
+│    --help                  Show this message and exit.                                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ feild-selection                                                                                                                                                      │
+│ lat-long                                                                                                                                                             │
+│ s3-bucket                                                                                                                                                            │
+│ user-register                                                                                                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Here are list of some basic command examples:
+User Registration
+`python cliapi.py --email your_email --password password user-register First_name Last_name Tier Admin`
+
+Field Selection
+`python cliapi.py --email your_email --password password feild-selection table_name req_values`
+
+Example:
+
+ 
+
+`
+
+
 ## Wheels
 
 We have used wheels as a pre-built binary package format for Python modules and libraries to access the APIs. They are designed to make it easier to install and manage Python packages, by providing a convenient, single-file format that can be downloaded and installed without the need to compile the package from source code
