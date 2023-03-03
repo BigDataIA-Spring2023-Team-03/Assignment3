@@ -1,45 +1,31 @@
-# FASTAPI Fetcher
-
-FASTAPI Fetcher is an application that fetches GEOS-18 satellite data and NEXRAD data by making FASTAPI calls. The application is built on Streamlit, and in the backend, FAST API is used. Both the front-end and back-end are Dockerized into separate Docker containers. Users can search the data file using mainly two methods: using file name search - the file URL for S3 bucket is generated using the string filename, and using field selection - where users can select individual fields and get the file. The file can be downloaded or pushed into your S3 bucket.
-
 ## FAST API
 
-FAST API is used for the main backend code to fetch the NEXRAD and GEOS-18 files. There are also authentication tokens generated for each user login. The API uses metadata.db database file to fetch values. A sign-in and authentication feature is added using JWT, which is also used for authentication for each user.
-
-## AWS Logging
-
-We have implemented AWS logging system that keeps track of all the Log information into our S3 account. The logs basically store information such as log-group-name, log-stream-name and log-events such as time, stamps, and messages.
+FASTAPI is used in the backend code to limit the user API request- monitor their subscribed plan usage and suggest an upgradation plan. There are also authentication tokens generated for each user login. The API uses the metadata.db database file to fetch values. A sign-in and authentication feature is added using JWT, which is also used for authentication for each user.
 
 ## Streamlit
 
-We have used Python Streamlit for the main front-end of our application. This Streamlit application is hosted on port 8501 for localhost users. The app is paginated into several pages like login where users could log in to their account, register page where new users could sign up, and two other main pages should be locked until login. These two pages or the file feature which connects to the bank and fast API and the station locations for NEXRAD.
+We have used Python Streamlit for the main front end of our application. This Streamlit application is hosted on port 8501 for local-host users. The app is paginated into several pages like login where users can log in to their account, register page where new users can sign up, and two other main pages that should be locked until login. These two pages or the file feature connect to the bank and fast API and the station locations for NEXRAD.
 
-## Great Expectation
+Apart from that it also monitors user activities like the number of API call requests by a user, the number of successful and unsuccessful call requests, etc
 
-Great expectation is a Python library that we have used for data quality testing. We have created several checkpoints to check our expectations and evaluate the data quality.
+## CLI
 
-## Apache Airflow
-
-Apache Airflow has been used in the project for some trigger-based automation tasks such as updating the metadata database file, which contains metadata for NEXRAD and GEOS18 metadata. From the S3 bucket, which are as follows: 
-- GEOS18 S3 bucket - https://noaa-goes18.s3.amazonaws.com/index.html/ 
-- NEXRAD S3 bucket - https://noaa-nexrad-level2.s3.amazonaws.com/index.html. 
-
-We also use Airflow DAGs to create a great expectation report, once the data is fetched and updated to the metadata database file. 
+Here we have used the Typer library to define a command-line interface application that interacts with an API for data manipulation. Also, we have used the Poetry tool for dependency management and packaging in Python. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you. Poetry offers a lock file to ensure repeatable installs and can build your project for distribution.
 
 ## Docker
 
-We have used Docker containers to containerize our application into three separate containers. Two of these containers, namely, the front-end and back-end container, can communicate with each other, which we have defined in the docker-compose.yaml file. We have also created another container for our airflow Apache DAGs, where we have used Docker storage mount to share the metadata database file.
+We have used Docker containers to containerize our application into three separate containers. Two of these containers, namely, the front-end and back-end container, can communicate with each other, which we have defined in the docker-compose.yaml file. 
 
-## Installation
+## Wheels
+
+We have used wheels as a pre-built binary package format for Python modules and libraries to access the APIs. They are designed to make it easier to install and manage Python packages, by providing a convenient, single-file format that can be downloaded and installed without the need to compile the package from source code
 
 #### Pre-requisites
-- Docker - https://docs.docker.com/engine/install/
-- Docker App - https://docs.docker.com/get-docker/
-- Apache Airflow -https://airflow.apache.org
+
 
 1. Clone the repository: 
 
-`git clone https://github.com/BigDataIA-Spring2023-Team-03/Assignment2.git`
+`git clone https://github.com/BigDataIA-Spring2023-Team-03/Assignment3.git`
 
 
 2. Open the Application folder on any IDE. For this example, we will be using Visual Studio Code.
@@ -59,14 +45,13 @@ We have used Docker containers to containerize our application into three separa
 6. Here, you can register or login to the application. Once logged in, you would be redirected to the DataFetcher Page.
 
 ## Acknowledgements
-The FASTAPI Fetcher was built by the BigDataIA-Spring2023-Team-03 group as part of an assignment. Special thanks to the following technologies:
+The CLI was built by the BigDataIA-Spring2023-Team-03 group as part of this assignment. Special thanks to the following technologies and Python Libraries:
 
-- Streamlit
 - FASTAPI
-- Great Expectation
-- Apache Airflow
-- Docker
-- AWS S3 Bucket
+- Streamlit
+- Typer
+- Poetry
+- Wheel
 
 
 
@@ -82,13 +67,13 @@ The FASTAPI Fetcher was built by the BigDataIA-Spring2023-Team-03 group as part 
 
 ## CLAAT Link 
 
-For Detailed documentation- [Click here](https://codelabs-preview.appspot.com/?file_id=13bISkcPZwNQ5-8rs55OgNK-DbexBzB3MhbuWXRKY9kI#7)
+For Detailed documentation- [Click here](https://codelabs-preview.appspot.com/?file_id=13Lu_KA8h4WPHTBIyg0DzN-B6zXmzNwb8xc2egh3dOjk)
 
 ## Contributions
 
-- Raj Mehta
-- Mani Deepak Reddy Aila
-- Jared Videlefsky
-- Rumi Jha
+- Raj Mehta - 25%
+- Mani Deepak Reddy Aila - 25%
+- Jared Videlefsky - 25%
+- Rumi Jha - 25%
 
 
