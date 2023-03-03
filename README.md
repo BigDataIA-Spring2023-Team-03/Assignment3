@@ -29,23 +29,23 @@ Here are some Basic Commands for our cliapi.py
 
 ╭─ Options ──────────────────────────────────────────────────────────────────────────────╮
 
-│ *  --email           TEXT  Username [env var: APP_USERNAME] [default: None] [required] |                                                                                                                                              │
+│ *  --email     TEXT  Username [env var: APP_USERNAME] [default: None] [required]                                                                                                                                        
 
-│ *  --password        TEXT  Password [env var: APP_PASSWORD] [default: None] [required] |                                                                                                                                              │
+│ *  --password  TEXT  Password [env var: APP_PASSWORD] [default: None] [required]                                                                                                                                             │
 
-│    --help                  Show this message and exit.                                 |                                                                                                                                              │
+│    --help      Show this message and exit.                                                                                                                                                                        
 
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 ╭─ Commands────────────╮
 
-│ feild-selection                                                                                                                                                                │
+ feild-selection                                                                                                                                                                
 
-│ lat-long                                                                                                                                                                        │
+ lat-long                                                                                                                                                                        
 
-│ s3-bucket                                                                                                                                                                      │
+ s3-bucket                                                                                                                                                                      
 
-│ user-register                                                                                                                                                                  │
+ user-register        
 
 ╰─────────────────────╯
 
