@@ -40,7 +40,7 @@ We have used wheels as a pre-built binary package format for Python modules and 
 `docker-compose up`
 
 
-5. For running the app locally, once the above commands are still running, go to: http://localhost:8501/
+5. For running the app locally, once the above commands are still running, go to: http://52.201.212.226:8501/
 
 6. Here, you can register or login to the application. Once logged in, you would be redirected to the DataFetcher Page.
 
