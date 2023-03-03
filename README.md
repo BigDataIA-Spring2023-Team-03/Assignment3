@@ -2,6 +2,11 @@
 
 FASTAPI is used in the backend code to limit the user API request- monitor their subscribed plan usage and suggest an upgradation plan. There are also authentication tokens generated for each user login. The API uses the metadata.db database file to fetch values. A sign-in and authentication feature is added using JWT, which is also used for authentication for each user.
 
+## Architecture
+
+![architecture_diagram_assignment3](https://user-images.githubusercontent.com/61338379/222849238-6ff84329-ce90-4733-bca3-06b382ea3cf1.png)
+
+
 ## Streamlit
 
 We have used Python Streamlit for the main front end of our application. This Streamlit application is hosted on port 8501 for local-host users. The app is paginated into several pages like login where users can log in to their account, register page where new users can sign up, and two other main pages that should be locked until login. These two pages or the file feature connect to the bank and fast API and the station locations for NEXRAD.
