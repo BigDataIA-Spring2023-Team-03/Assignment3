@@ -63,10 +63,14 @@ python cliapi.py --email your_email --password password feild-selection table_na
 Example:
 <img width="1194" alt="feild-selection-example" src="https://user-images.githubusercontent.com/61338379/222836160-3f8d046d-58b7-4919-8da6-391e01b35860.png">
 
+
 CLI Help can be accessed in following way:
+
 <img width="633" alt="cli_help" src="https://user-images.githubusercontent.com/61338379/222836493-7f96d099-d8ca-45be-983b-3c8e421ec5ea.png">
 
+
 Command Help can be accessed in following way:
+
 <img width="985" alt="command_help" src="https://user-images.githubusercontent.com/61338379/222836648-579869aa-f19a-400b-8a3c-18f689b260c3.png">
 
 
@@ -80,19 +84,24 @@ We have used wheels as a pre-built binary package format for Python modules and 
 
 1. Clone the repository: 
 
-`git clone https://github.com/BigDataIA-Spring2023-Team-03/Assignment3.git`
+```sh
+git clone https://github.com/BigDataIA-Spring2023-Team-03/Assignment3.git
+```
 
 
 2. Open the Application folder on any IDE. For this example, we will be using Visual Studio Code.
 
 3. Open a new terminal in VSCode and type the following commands:
-
-`docker-compose build`
+```sh
+docker-compose build
+```
 
 
 4. Once the build is successful, run:
 
-`docker-compose up`
+```sh
+docker-compose up
+```
 
 
 5. For running the app locally, once the above commands are still running, go to: http://52.201.212.226:8501/
