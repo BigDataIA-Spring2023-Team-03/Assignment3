@@ -144,8 +144,8 @@ async def api_status(email: str, subscription_tier: str):
 async def subscription_upgrade(user: schemas.UserSubscriptionSchema):
     dbUtil = DbUtil('metadata.db')
     dbUtil.update_table('users', 'subscription_tier', user.subscription_tier, 'email', user.email)
-    with open(file_path, "rb") as f:
-        s3.upload_fileobj(f, dest_bucket, s3_key)
+    # with open(file_path, "rb") as f:
+    #     s3.upload_fileobj(f, dest_bucket, s3_key)
     return {'New Subscription Tier': user.subscription_tier}
 
 

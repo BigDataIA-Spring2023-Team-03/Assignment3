@@ -116,8 +116,6 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
                                     headers={'Authorization': f'Bearer {st.session_state.access_token}'})
 
                     st.session_state.api_calls = res2.json().get('API Calls Remaining')
-
-                    st.session_state.api_calls = res2.json().get('API Calls Remaining')
                     st.write(f'''Your Subscription Tier has been updated to {st.session_state.subscription_tier}!''') # TODO #, you now have {subscription_tier.split('-')[1]} API Calls/hour!''')
                 
                 elif res and res.status_code == 403:
@@ -131,6 +129,10 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
             else: # subscription_tier == st.session_state.subscription_tier:
                 error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">Can't select current tier!</p>"""
                 st.markdown(error, unsafe_allow_html=True)
+
+        else:
+            error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">No subscription tier selected!</p>"""
+            st.markdown(error, unsafe_allow_html=True)
 
 
     util.conn.close()
