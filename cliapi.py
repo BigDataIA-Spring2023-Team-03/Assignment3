@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from dataclasses import dataclass
 import requests
 import json
+from enum import Enum 
+
 load_dotenv()
 
 app = typer.Typer(add_completion=False)
@@ -15,7 +17,7 @@ class Common:
 
 
 @app.command()
-def feild_selection(ctx: typer.Context, table_name: str, req_value: str, input_values):
+def feild_selection(ctx: typer.Context, table_name: str, req_value: str):
 
     logged_in = False
     url = "http://localhost:8000"
@@ -54,14 +56,38 @@ def feild_selection(ctx: typer.Context, table_name: str, req_value: str, input_v
         #     typer.echo("\n",response.json())
         # else:
         #     typer.echo("\nFailed to get response") # request failed
-
-
+        input_values ={}
+        if req_value == "year":
+            product = typer.prompt("What's the product you are looking for?")
+            input_values = {"product": str(product)}
+        elif req_value == "dayofyear":
+            product = typer.prompt("What's the product you are looking for?")
+            year = typer.prompt("What's the year?")
+            input_values = {"product": str(product),
+                            "year": str(year)}
+        elif req_value == "hour":
+            product = typer.prompt("What's the product you are looking for?")
+            year = typer.prompt("What's the year?")
+            dayofyear = typer.prompt("What's the dayofyear?")
+            input_values = {"product": str(product),
+                            "year": str(year),
+                            "dayofyear": str(dayofyear)}
+        elif req_value == "file":
+            product = typer.prompt("What's the product you are looking for?")
+            year = typer.prompt("What's the year?")
+            dayofyear = typer.prompt("What's the dayofyear?")
+            hour = typer.prompt("What's the hour?")
+            input_values = {"product": str(product),
+                            "year": str(year),
+                            "dayofyear": str(dayofyear),
+                            "hour": str(hour)}
+    
         data = {
                     "table_name": table_name,
                     "req_value": req_value,
-                    "input_values": {"product": 'ABI-L1b-RadC'}
+                    "input_values": input_values
                 }
-
+        
             # TESTING
             # st.write(f'access_token {st.session_state.access_token}')
             # st.write(data)
@@ -82,20 +108,32 @@ def feild_selection(ctx: typer.Context, table_name: str, req_value: str, input_v
         except requests.exceptions.RequestException as err:
             typer.echo(f"An error occurred: {err}")
 
+class Plans(str, Enum):
+    free = "free"
+    gold = "gold"
+    platinium = "platinium"
  
 @app.command()
-def user_register(ctx: typer.Context, first_name, last_name):
+def user_register(ctx: typer.Context, first_name, last_name, subscription_tier: Plans, is_admin):
 
     url = "http://localhost:8000"
     access_token = ""
     post = "/user/register"
     url_call = url + post
 
+    if subscription_tier == "free":
+        subscription_tier = "Free-10 Requests/hour"
+    if subscription_tier == "gold":
+        subscription_tier = "Gold-15 Requests/hour"
+    if subscription_tier == "platinium":
+        subscription_tier = "Platinum-20 Requests/hour"
     data = {
     "first_name": first_name,
     "last_name": last_name,
     "email": ctx.obj.email,
-    "password": ctx.obj.password
+    "password": ctx.obj.password,
+    "subscription_tier": str(subscription_tier),
+    "is_admin": is_admin
     } 
 
     response = requests.post(url_call, json=data)
