@@ -42,7 +42,21 @@ def feild_selection(ctx: typer.Context, table_name: str, req_value: str):
         typer.echo(f"Access Token is {access_token}")
 
     if logged_in:
-
+        # post = "/fieldselection"
+        # url_call = url + post
+        # headers = {}
+        # headers['Authorization'] = f"Bearer {access_token}"
+        # payload = json.dumps({
+        #     "table_name": table_name,
+        #     "req_value": req_value,
+        #     "input_values": input_values
+        # })
+        # response = requests.request("GET", url_call, headers=headers, data=payload)
+        # if response.status_code == 200:
+        #     typer.echo("Success") # request success
+        #     typer.echo("\n",response.json())
+        # else:
+        #     typer.echo("\nFailed to get response") # request failed
         input_values ={}
         if req_value == "year":
             product = typer.prompt("What's the product you are looking for?")
@@ -75,6 +89,10 @@ def feild_selection(ctx: typer.Context, table_name: str, req_value: str):
                     "input_values": input_values
                 }
         
+            # TESTING
+            # st.write(f'access_token {st.session_state.access_token}')
+            # st.write(data)
+            # HANDLING 403 EXCEPTION, DUE TO 5 MIN LOGIN EXPIRATION
         try:
             response = requests.get(url = 'http://localhost:8000/field_selection', json=data, headers={'Authorization':  f'Bearer {access_token}'})
             response.raise_for_status()
@@ -239,3 +257,5 @@ def common(ctx: typer.Context,
 
 if __name__ == "__main__":
     app()
+
+
