@@ -15,8 +15,8 @@ clientlogs = boto3.client('logs',
 # write logs
 def write_logs(message : str):
     clientlogs.put_log_events(
-    logGroupName="assignment1-log-group",
-    logStreamName="assignment1-log-stream",
+    logGroupName="assignment3-log-group",
+    logStreamName="assignment3-log-stream",
     logEvents = [
         {
             'timestamp': int(time.time() * 1e3),

@@ -11,6 +11,7 @@ from Util.DbUtil import *
 from Util.S3Util import S3Util
 import string
 import requests
+import re
 from datetime import datetime
 
 
@@ -155,24 +156,32 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
     if search_method == 'File Name':
         st.write('Search by Filename:')
         file_name_input = st.text_input('File Name:')
-        # TODO: Need rules on what is a valid file_name input
+        regex = re.compile(r'(OR)_(ABI)-(L\d+b)-(Rad[A-Z]?)-([A-Z]\dC\d{2})_(G\d+)_(s\d{14})_(e\d{14})_(c\d{14}).nc')
+        file_validation = regex.match(file_name_input)
+        regex2 = re.compile(r'K[A-Z]{3}[0-9]{8}_[0-9]{6}(_V06_MDM)?')
+        file_validation2 = regex2.match(file_name_input)
+
         if file_name_input:
-            aws_logging.write_logs(f'User Input: {file_name_input}')
-            # TEST
-            # st.write(BUCKET_NAME)
-            if ('nexrad' in BUCKET_NAME and file_name_input[0:3] == 'OR_'): # or ('noaa-goes' in BUCKET_NAME and file_name_input[0:3] != 'OR_'):
-                # Tips
-                st.markdown('<p style="font-family:sans-serif; color:Green; font-size: 20px;">Tip: Change Datasource!</p>', unsafe_allow_html=True)
+            if file_validation or file_validation2:
+                aws_logging.write_logs(f'User Input: {file_name_input}')
+                # TEST
+                # st.write(BUCKET_NAME)
+                if ('nexrad' in BUCKET_NAME and file_name_input[0:3] == 'OR_'): # or ('noaa-goes' in BUCKET_NAME and file_name_input[0:3] != 'OR_'):
+                    # Tips
+                    st.markdown('<p style="font-family:sans-serif; color:Green; font-size: 20px;">Tip: Change Datasource!</p>', unsafe_allow_html=True)
+                else:
+                    try:
+                        prefix, url = filename_url_producer(BUCKET_NAME, file_name_input)
+                        st.write("")
+                        st.write("Generated URL: " + url)
+                        aws_logging.write_logs(f'Generated URL: {url}')
+                    except Exception as e:
+                        error = f"""<p style="font-family:sans-serif; color:Red; font-size: 20px;">File Name Error: Incorrect File Name Format!</p>
+                                <p style="font-family:sans-serif; color:Red; font-size: 20px; margin-left: 25px;">- Exception: {e}</p>"""
+                        st.markdown(error, unsafe_allow_html=True)
             else:
-                try:
-                    prefix, url = filename_url_producer(BUCKET_NAME, file_name_input)
-                    st.write("")
-                    st.write("Generated URL: " + url)
-                    aws_logging.write_logs(f'Generated URL: {url}')
-                except Exception as e:
-                    error = f"""<p style="font-family:sans-serif; color:Red; font-size: 20px;">File Name Error: Incorrect File Name Format!</p>
-                            <p style="font-family:sans-serif; color:Red; font-size: 20px; margin-left: 25px;">- Exception: {e}</p>"""
-                    st.markdown(error, unsafe_allow_html=True)
+                error = """<p style="font-family:sans-serif; color:Red; font-size: 20px;">File Name Error: Incorrect File Name Format!</p>"""
+                st.markdown(error, unsafe_allow_html=True)
 
 
     s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
@@ -685,6 +694,7 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
     else:
         file_name = files_selected
 
+
     if (search_method == 'File Name' and file_name) or (search_method == 'Field Selection' and file_name):
         
         col1, col2 = st.columns(2)
@@ -707,9 +717,9 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
                 response = requests.post(url = 'http://backend:8000/s3_transfer', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
                 if response.status_code == 409:
                     st.error(f'{file_name} already transferred to S3!')
-                
+
                 # TRACKING APIS
-                list_of_tuples = [(st.session_state.email, 
+                list_of_tuples = [(st.session_state.email,
                         'S3_Transfer', # api
                         'POST', # api_type
                         f"""{data}""", # response_body
@@ -719,16 +729,16 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
                 # print(list_of_tuples)
                 # Insert into USER_API for Logging
                 util.insert('user_api', ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
-                
+
                 # TESTING
-                # st.write([(st.session_state.email, 
+                # st.write([(st.session_state.email,
                 #         'S3_Transfer', # api
                 #         'POST', # api_type
                 #         f"""{data}""", # response_body
                 #         response.status_code,
                 #         datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time_of_request
                 #         )])
-                    
+
                 dest_url = response.json().get('Destination s3 URL')
 
                 aws_logging.write_logs(f'User Action: Transfered file to S3 Bucket - {dest_url}')

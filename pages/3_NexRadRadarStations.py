@@ -59,7 +59,7 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
 
         map_loc = data[["LAT", "LONG", "station", "city"]]
 
-        map = folium.Map(location=[map_loc.LAT.mean(), map_loc.LONG.mean()], zoom_start=1, control_scale=True)
+        map = folium.Map(location=[map_loc.LAT.mean(), map_loc.LONG.mean()], zoom_start=4, control_scale=True)
 
         # Adding the points to the map by itterating through the dataframe
         for index, location_info in map_loc.iterrows():
