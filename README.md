@@ -40,13 +40,23 @@ Here are some Basic Commands for our cliapi.py
 
 Here are list of some basic command examples:
 User Registration
-`python cliapi.py --email your_email --password password user-register First_name Last_name Tier Admin`
+```sh
+python cliapi.py --email your_email --password password user-register First_name Last_name Tier Admin
+```
 
 Field Selection
-`python cliapi.py --email your_email --password password feild-selection table_name req_values`
+```sh
+python cliapi.py --email your_email --password password feild-selection table_name req_values
+```
 
 Example:
-<img width="1194" alt="Screenshot 2023-03-03 at 10 06 39 AM" src="https://user-images.githubusercontent.com/61338379/222836160-3f8d046d-58b7-4919-8da6-391e01b35860.png">
+<img width="1194" alt="feild-selection-example" src="https://user-images.githubusercontent.com/61338379/222836160-3f8d046d-58b7-4919-8da6-391e01b35860.png">
+
+CLI Help can be accessed in following way:
+<img width="633" alt="cli_help" src="https://user-images.githubusercontent.com/61338379/222836493-7f96d099-d8ca-45be-983b-3c8e421ec5ea.png">
+
+Command Help can be accessed in following way:
+<img width="985" alt="command_help" src="https://user-images.githubusercontent.com/61338379/222836648-579869aa-f19a-400b-8a3c-18f689b260c3.png">
 
 
 
