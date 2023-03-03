@@ -31,7 +31,7 @@ Here are some Basic Commands for our cliapi.py
 
 │ *  --email     TEXT  Username [env var: APP_USERNAME] [default: None] [required]                                                                                                                                        
 
-│ *  --password  TEXT  Password [env var: APP_PASSWORD] [default: None] [required]                                                                                                                                             │
+│ *  --password  TEXT  Password [env var: APP_PASSWORD] [default: None] [required]                                                                                                                                             
 
 │    --help      Show this message and exit.                                                                                                                                                                        
 
