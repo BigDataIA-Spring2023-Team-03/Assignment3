@@ -8,18 +8,13 @@ We have used Python Streamlit for the main front end of our application. This St
 
 Apart from that it also monitors user activities like the number of API call requests by a user, the number of successful and unsuccessful call requests, etc
 
-
-## Great Expectation
-
-Great expectation is a Python library that we have used for data quality testing. We have created several checkpoints to check our expectations and evaluate the data quality.
-
 ## CLI
 
 Here we have used the Typer library to define a command-line interface application that interacts with an API for data manipulation. Also, we have used the Poetry tool for dependency management and packaging in Python. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you. Poetry offers a lock file to ensure repeatable installs and can build your project for distribution.
 
 ## Docker
 
-We have used Docker containers to containerize our application into three separate containers. Two of these containers, namely, the front-end and back-end container, can communicate with each other, which we have defined in the docker-compose.yaml file. We have also created another container for our airflow Apache DAGs, where we have used Docker storage mount to share the metadata database file.
+We have used Docker containers to containerize our application into three separate containers. Two of these containers, namely, the front-end and back-end container, can communicate with each other, which we have defined in the docker-compose.yaml file. 
 
 ## Wheels
 
