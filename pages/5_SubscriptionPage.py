@@ -3,6 +3,7 @@ import pandas as pd
 from Util.DbUtil import *
 from datetime import datetime
 import requests
+import time
 
 
 if 'email' not in st.session_state:
@@ -86,24 +87,24 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
                     'subscription_tier': subscription_tier
                 }
                 res = requests.post(url='http://backend:8000/user/subscription_upgrade', json=data, headers={'Authorization':  f'Bearer {st.session_state.access_token}'})
-                
+                time.sleep(3)
                 # TRACKING APIS
                 # Insert into USER_API for Logging
-                list_of_tuples = [(st.session_state.email, 
-                                'Subscription_Upgrade', 
-                                'POST', 
-                                f"""{data}""", 
-                                res.status_code, 
-                                datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
+                # list_of_tuples = [(st.session_state.email,
+                #                 'Subscription_Upgrade',
+                #                 'POST',
+                #                 f"""{data}""",
+                #                 res.status_code,
+                #                 datetime.now().strftime("%Y-%m-%d %H:%M:%S"))]
                 # print(list_of_tuples)
                 # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], [(st.session_state.email, 'Login', 'POST', f"""{json.dumps(login_user)}""", res.status_code, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
-                util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
-                res2 = requests.get(url='http://backend:8000/user/status',
-                                    params={'email': st.session_state.email,
-                                            'subscription_tier': st.session_state.subscription_tier},
-                                    headers={'Authorization': f'Bearer {st.session_state.access_token}'})
+                # util.insert('user_api',  ['email', 'api', 'api_type', 'request_body', 'request_status', 'time_of_request'], list_of_tuples)
+                # res2 = requests.get(url='http://backend:8000/user/status',
+                #                     params={'email': st.session_state.email,
+                #                             'subscription_tier': st.session_state.subscription_tier},
+                #                     headers={'Authorization': f'Bearer {st.session_state.access_token}'})
 
-                st.session_state.api_calls = res2.json().get('API Calls Remaining')
+                # st.session_state.api_calls = res2.json().get('API Calls Remaining')
 
                 if res and res.status_code == 200:
                     # If it works update the session state
