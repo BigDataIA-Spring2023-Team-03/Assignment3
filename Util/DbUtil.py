@@ -49,11 +49,12 @@ class DbUtil:
             query = f'''UPDATE {table_name} 
                         SET {update_column} = '{update_value}'
                         WHERE {filter_column} = '{filter}';'''
-            # TESTING
-            print(query)
 
             self.cursor.execute(query)
             self.conn.commit()
+
+            # TESTING
+            print(query)
         except Exception as e:
             print(f"Error executing query: {e}")
             raise Exception("Error during query execution")
