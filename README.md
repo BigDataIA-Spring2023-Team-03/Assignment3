@@ -46,10 +46,8 @@ Field Selection
 `python cliapi.py --email your_email --password password feild-selection table_name req_values`
 
 Example:
+<img width="1194" alt="Screenshot 2023-03-03 at 10 06 39 AM" src="https://user-images.githubusercontent.com/61338379/222836160-3f8d046d-58b7-4919-8da6-391e01b35860.png">
 
- 
-
-`
 
 
 ## Wheels
