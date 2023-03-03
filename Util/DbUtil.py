@@ -45,14 +45,33 @@ class DbUtil:
 
     # Update Table
     def update_table(self, table_name, update_column, update_value, filter_column, filter):
-        query = f'''UPDATE {table_name} 
-                    SET {update_column} = '{update_value}'
-                    WHERE {filter_column} = '{filter}';'''
-        # TESTING
-        # print(query)
+        try:
+            query = f'''UPDATE {table_name} 
+                        SET {update_column} = '{update_value}'
+                        WHERE {filter_column} = '{filter}';'''
+            # TESTING
+            print(query)
 
-        self.cursor.execute(query)
-        self.conn.commit()
+            self.cursor.execute(query)
+            self.conn.commit()
+        except Exception as e:
+            print(f"Error executing query: {e}")
+            raise Exception("Error during query execution")
+        # TODO: Upload changes back to S3 Bucket
+        s3 = boto3.client(
+            's3',
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key
+        )
+        # Destination S3 Directory:
+        dest_bucket = 'damg7245-db'
+
+        file_path = 'metadata.db'
+        s3_key = 'metadata.db'
+        with open(file_path, "rb") as f:
+            s3.upload_fileobj(f, dest_bucket, s3_key)
+
+
 
     def insert(self, table_name, column_names, list_of_tuples):
         try:
