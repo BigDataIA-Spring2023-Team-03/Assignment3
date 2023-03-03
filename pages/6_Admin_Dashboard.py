@@ -5,6 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from datetime import datetime
+import altair as alt
+import numpy as np
 
 if 'email' not in st.session_state:
     st.session_state.email = ''
@@ -89,7 +91,7 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
 
         ######################################################################################################
         # User Requests Over Time
-        st.header('User Request Over Time')
+        st.header('User Requests Over Time')
         # Dropdown list of users
         query = """select distinct email from user_api order by email"""
         df = pd.read_sql_query(query, conn)
@@ -121,7 +123,7 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
         ######################################################################################################
         # Total Requests Over Time
         # TODO: turn into bar graph where you can see the breakdown of success/failure request status
-        st.header('User Request Over Time')
+        st.header('Usage Over Time')
 
         query = f"""
         select date(time_of_request) date, 
@@ -147,7 +149,7 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
         ######################################################################################################
         # Running Totals Over Time
         # TODO: Add in user growth
-        st.header('Running Totals Over Time')
+        st.header('Running Request Total Over Time')
 
         query = f"""
         with totals as (
@@ -174,6 +176,81 @@ if not st.session_state.email == "" and st.session_state.api_calls > 0:
                     markers=True).set(ylim=(0))
         st.pyplot(fig)
 
+
+        ######################################################################################################
+        # Running User Total Over Time
+        # TODO: Add in user growth
+        st.header('Running User Total Over Time')
+
+        query = f"""
+        with user_date as (
+        select min(date(time_of_request)) min_date, 
+                email
+        from user_api 
+        group by email
+        ),
+        totals as (
+        select min_date date,
+                count(*) total_users
+        from user_date
+        group by min_date
+        )
+        select date, 
+                sum(total_users) over (rows unbounded preceding) total_users
+        from totals
+        """
+        df = pd.read_sql_query(query, conn)
+        # TESTING
+        # st.write(df.head())
+        # st.write(df.dtypes)
+
+        fig = plt.figure(figsize=(10, 4))
+        sns.lineplot(x='date', y='total_users', 
+                    data=df,
+                    markers=True).set(ylim=(0))
+        st.pyplot(fig)
+
+
+        ######################################################################################################
+        # Comparison of Success and Failed Request Calls
+        st.header('Comparison of Success vs. Failed Requests')
+        query = f"""
+        with call_comparison as (select request_status, count(*) as count from user_api 
+        group by request_status)
+        select case when request_status = 200 then 'Success' else 'Failure' end as status, count from call_comparison
+        """
+
+        df = pd.read_sql_query(query, conn)
+        # st.write(df)
+        status = df['status'].to_numpy()
+        count = df['count'].to_numpy()
+        df['status'] = status
+        df['count'] = count
+
+        h_bar_chart = alt.Chart(df).mark_bar().encode(
+        x='count',
+        y='status').properties(width=700, height=300).configure_mark(opacity=0.4, color='green')
+        st.write("", "", h_bar_chart)
+
+
+        ######################################################################################################
+        # Total calls from each end point
+        st.header('Total Requests by End Point')
+        query = f"""
+        select api as EndPoint, count(*) as count from user_api
+        group by api
+        """
+        df = pd.read_sql_query(query, conn)
+        # st.write(df)
+        status = df['EndPoint'].to_numpy()
+        count = df['count'].to_numpy()
+        df['EndPoint'] = status
+        df['count'] = count
+
+        v_bar_chart = alt.Chart(df).mark_bar().encode(
+        x='EndPoint',
+        y='count').properties(width=700, height=500).configure_mark(opacity=0.4, color='red')
+        st.write("", "", v_bar_chart)
 
         ######################################################################################################
         # Details
